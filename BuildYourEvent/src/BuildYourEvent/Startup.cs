@@ -17,6 +17,15 @@ namespace BuildYourEvent
        
         public void ConfigureServices(IServiceCollection services)
         {
+            var connection = @"Server=localhost\SQLEXPRESS;Database=ByeDB;Trusted_Connection=True;MultipleActiveResultSets=true";
+
+            //services.AddDbContext<MoviesContext>(options => options.UseSqlServer(connection));
+
+            services.AddMvc();
+
+            services.AddMemoryCache();
+
+            services.AddSession();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
