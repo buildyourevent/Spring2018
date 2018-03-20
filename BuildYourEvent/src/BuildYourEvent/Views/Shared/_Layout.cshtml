@@ -7,11 +7,33 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="/CSS/StyleSheet.css"/>
+    <link rel="stylesheet" href="/BuildYourEvent/CSS/StyleSheet.css"/>
+    <style>
+        .container{
+            -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, .5);
+            -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, .5);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, .5);
+            border-color:white;
+        }
+
+        #photo{
+            height: 550px;
+            width: 100%;
+            background-image:url("https://www.newstatesman.com/sites/all/themes/creative-responsive-theme/images/new_statesman_events.jpg");
+            background-size: auto;
+            }
+        .centered {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          /* bring your own prefixes */
+          transform: translate(-50%, -50%);
+        }
+    </style>
 </head>
-<body>
+<body style="background-color: #5d6d7e;">
     <!-- Fixed navbar -->
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top" style="background-color: #808080">
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top" style="background-color: #212f3d;">
         <a class="navbar-brand" href="/">BUILD YOUR EVENT LOGO</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -31,13 +53,16 @@
     <br />
     <br />
     <br />
-    <div class="container">
+    <div class="container" style="background-color:white;">
         @RenderBody()
     </div>
+    <br />
+
 </body>
+
 </html>
-<footer  class="footer navbar-fixed-bottom">
-    <div class="container">
+<footer  class="footer navbar-fixed-bottom" >
+    <div class="container" style="background-color:white;">
         <div class="row">
             <div class="col">
                 <p>Build Your Event</p>
