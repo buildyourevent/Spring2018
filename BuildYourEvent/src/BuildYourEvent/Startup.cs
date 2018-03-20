@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Microsoft.EntityFrameworkCore;
 
 namespace BuildYourEvent
 {
@@ -18,8 +17,14 @@ namespace BuildYourEvent
        
         public void ConfigureServices(IServiceCollection services)
         {
+            var connection = @"Server=localhost\SQLEXPRESS;Database=ByeDB;Trusted_Connection=True;MultipleActiveResultSets=true";
+
+            //services.AddDbContext<MoviesContext>(options => options.UseSqlServer(connection));
+            //comment
             services.AddMvc();
+
             services.AddMemoryCache();
+
             services.AddSession();
         }
 
