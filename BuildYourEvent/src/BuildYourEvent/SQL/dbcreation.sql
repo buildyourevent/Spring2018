@@ -1,5 +1,5 @@
 /*Right click on server, select "new query" and paste contents into the page that opens.
-Execute the query and the db and tables will be created*/
+Execute the query and the db and tables will be created */
 CREATE DATABASE [ByeDB]
 GO
 USE [ByeDB]
