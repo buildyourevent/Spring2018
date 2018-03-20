@@ -4,10 +4,71 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
 </head>
 <body>
-    <div>
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top" style="background-color: #808080">
+        <a class="navbar-brand" href="/">BUILD YOUR EVENT LOGO</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav mr-auto">
+               
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#" class="nav-link"> What we do</a></li>
+                <li><a href="#" class="nav-link">Add your venue</a></li>
+                <li><a href="#" class="nav-link"> Login</a></li>
+            </ul>
+        </div>
+    </nav>
+    <br />
+    <br />
+    <br />
+    <br />
+    <div class="container">
         @RenderBody()
     </div>
 </body>
 </html>
+<footer  class="footer navbar-fixed-bottom">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <p>Build Your Event</p>
+                <ul class="navbar-nav mr-auto">
+                    <li><a class="nav-link" href="#">About us</a></li>
+                    <li><a class="nav-link" href="#">Careers</a></li>
+                    <li><a class="nav-link" href="#">Contact</a></li>
+                </ul>
+            </div>
+            <div class="col">
+                <p>List your venue</p>
+                <ul class="navbar-nav mr-auto">
+                    <li><a class="nav-link" href="#">How it works</a></li>
+                    <li><a class="nav-link" href="#">Sign up free</a></li>
+                </ul>
+            </div>
+            <div class="col">
+               <p>Support</p>
+                <ul class="navbar-nav mr-auto">
+                    <li><a class="nav-link" href="#">Cancellations</a></li>
+                    <li><a class="nav-link" href="#">Liability & insurance</a></li>
+                </ul>
+            </div>
+            <div class="col">
+                <p>Legal</p>
+                <ul class="navbar-nav mr-auto">
+                    <li><a class="nav-link" href="#">Terms</a></li>
+                    <li><a class="nav-link" href="#">Privacy</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+        <p style="text-align:center;">Copyright 2018 (c) Build Your Event | Built in Ottawa</p>
+</footer>
