@@ -12,7 +12,7 @@ CREATE TABLE Locations (
 	[province] varchar(200) NOT NULL,
 	[country] varchar(200) NOT NULL,
 	[street] varchar(200) NOT NULL,
-	[postal_code] varchar(7) NOT NULL IDENTITY,
+	[postal_code] varchar(7) NOT NULL,
 	[latitude] varchar(100) NOT NULL,
 	[longitude] varchar(100) NOT NULL,
 	PRIMARY KEY ([id])
