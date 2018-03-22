@@ -15,5 +15,10 @@ namespace BuildYourEvent.Controllers
         {
             return View();
         }
+        public IActionResult Results()
+        {
+            return View();
+        }
+
     }
 }
