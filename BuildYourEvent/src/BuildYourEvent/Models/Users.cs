@@ -42,7 +42,7 @@ namespace BuildYourEvent.Models
         }
         [ForeignKey("User_Types")]
         [Required]
-        public int fk_user_type
+        public int fk_user_types
         {
             get;
             set;
