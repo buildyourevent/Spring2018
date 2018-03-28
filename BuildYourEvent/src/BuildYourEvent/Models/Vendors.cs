@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BuildYourEvent.Models
 {
@@ -15,7 +16,7 @@ namespace BuildYourEvent.Models
             get;
             set;
         }
-
+        [ForeignKey("Users")]
         [Required]
         public int fk_user
         {
@@ -23,6 +24,7 @@ namespace BuildYourEvent.Models
             set;
         }
 
+        [ForeignKey("Venues")]
         [Required]
         public int fk_venue
         {

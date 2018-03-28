@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -52,7 +53,7 @@ namespace BuildYourEvent.Models
             set;
         }
 
-
+        [ForeignKey("Venue_Types")]
         [Required]
         public int fk_venue_type
         {
@@ -60,6 +61,7 @@ namespace BuildYourEvent.Models
             set;
         }
 
+        [ForeignKey("Event_Types")]
         [Required]
         public int fk_event_type
         {
@@ -67,6 +69,7 @@ namespace BuildYourEvent.Models
             set;
         }
 
+        [ForeignKey("Amenities")]
         [Required]
         public int fk_amenity
         {
@@ -74,6 +77,7 @@ namespace BuildYourEvent.Models
             set;
         }
 
+        [ForeignKey("Venue_Rules")]
         [Required]
         public int fk_venue_rule
         {
@@ -81,24 +85,31 @@ namespace BuildYourEvent.Models
             set;
         }
 
+        [ForeignKey("Styles")]
         [Required]
         public int fk_style
         {
             get;
             set;
         }
+
+        [ForeignKey("Features")]
         [Required]
         public int fk_feature
         {
             get;
             set;
         }
+
+        [ForeignKey("On_Site_Services")]
         [Required]
         public int fk_on_site_service
         {
             get;
             set;
         }
+
+        [ForeignKey("Locations")]
         [Required]
         public int fk_location
         {
