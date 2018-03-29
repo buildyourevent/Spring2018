@@ -1,0 +1,88 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = "/Views/Shared/_Layout.cshtml";
+}
+
+<!--INSERT INTO On_Site_Services(name) VALUES ('Tech Support');
+INSERT INTO On_Site_Services(name) VALUES ('Catering');
+INSERT INTO On_Site_Services(name) VALUES ('Bartenders');
+INSERT INTO On_Site_Services(name) VALUES ('Servers');
+INSERT INTO On_Site_Services(name) VALUES ('Chef');
+INSERT INTO On_Site_Services(name) VALUES ('DJ');
+INSERT INTO On_Site_Services(name) VALUES ('Cleaning');-->
+
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-7" >
+                    <div class="container" style="background-color:white;">
+                        <form class="form-inline" href="#" >
+                            <div class="form-group">
+                                <label for="Date"class="col-md-6 col-form-label">Date</label>
+                                <div class="col-sm-10">
+                                    <input id="date"class="form-control" placeholder="Date" type="Date" required />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="on-site"class="col-md-6 col-form-label">On-site Services</label>
+                                <div class="col-sm-10">
+                                    <select class="form-control" id="on-site">
+                                        <option>Catering</option>
+                                        <option>Bartenders</option>
+                                        <option>Servers</option>
+                                        <option>Chef</option>
+                                        <option>DJ</option>
+                                        <option>Cleaning</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <input id="submit" type="submit" class="btn btn-primary btn-lg" value="Filter" />
+                        </form> 
+                        <br/>
+                        <div class="container" id="filters"></div>
+                     
+
+                    </div>
+                </div>
+
+                <div class="col-md-5">
+                    <div class="float-right"id="googleMap" style="width:100%;height:600px; "></div>
+                </div>
+            </div>
+
+        </div>
+        
+
+<script type="text/javascript">
+            function initMap() {
+
+                var currentLocation = new google.maps.LatLng("45.4215","-75.6972");
+
+
+                var myCenter = currentLocation;
+                var mapCanvas = document.getElementById("googleMap");
+                var mapOptions = {
+                    center : myCenter,
+                    zoom : 9
+                };
+                map = new google.maps.Map(mapCanvas, mapOptions);
+            }
+
+            $("#on-site").change(function () {
+
+                var button = '<button class="btn btn-secondary">' + $(this).val(); + '</button>&nbsp;';         
+                $("#filters").append(button);
+            });
+
+            $("#date").change(function () {
+                var button = '<button class="btn btn-secondary">' + $(this).val(); + '</button>&nbsp;';
+                $("#filters").append(button);
+            });
+
+
+            
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCDVghUsejUCZxuCLkGjcwb6usIOJivbnI&callback=initMap"></script>
