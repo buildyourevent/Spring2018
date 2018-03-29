@@ -21,7 +21,6 @@ namespace BuildYourEvent
             var connection = @"Server=localhost\SQLEXPRESS;Database=ByeDB;Trusted_Connection=True;MultipleActiveResultSets=true";
 
             services.AddDbContext<VenuesDataContext>(options => options.UseSqlServer(connection));
-            //comment
             services.AddMvc();
 
             services.AddMemoryCache();

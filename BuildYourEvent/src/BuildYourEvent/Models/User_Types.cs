@@ -10,7 +10,7 @@ namespace BuildYourEvent.Models
     public class User_Types
     {
         [Required]
-        public int id
+        public short id
         {
             get;
             set;

@@ -11,7 +11,7 @@ namespace BuildYourEvent.Models
     public class Users
     {
         [Required]
-        public int id
+        public short id
         {
             get;
             set;
@@ -42,7 +42,7 @@ namespace BuildYourEvent.Models
         }
         [ForeignKey("User_Types")]
         [Required]
-        public int fk_user_types
+        public short fk_user_types
         {
             get;
             set;

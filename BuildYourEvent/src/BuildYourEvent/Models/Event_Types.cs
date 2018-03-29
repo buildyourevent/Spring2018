@@ -11,7 +11,7 @@ namespace BuildYourEvent.Models
     public class Event_Types
     {
         [Required]
-        public int id
+        public short id
         {
             get;
             set;

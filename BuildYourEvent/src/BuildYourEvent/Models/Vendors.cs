@@ -11,14 +11,14 @@ namespace BuildYourEvent.Models
     public class Vendors
     {
         [Required]
-        public int id
+        public short id
         {
             get;
             set;
         }
         [ForeignKey("Users")]
         [Required]
-        public int fk_user
+        public short fk_user
         {
             get;
             set;
@@ -26,7 +26,7 @@ namespace BuildYourEvent.Models
 
         [ForeignKey("Venues")]
         [Required]
-        public int fk_venue
+        public short fk_venue
         {
             get;
             set;
