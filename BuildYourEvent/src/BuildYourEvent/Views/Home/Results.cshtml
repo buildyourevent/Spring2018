@@ -49,18 +49,18 @@ INSERT INTO On_Site_Services(name) VALUES ('Cleaning');-->
             @if (Model.Venues != null)
             {
 
-                @foreach (Venues venues in Model.Venues)
-                {
-                    <p>@venues.name</p>
-                    <p>@venues.price_daily</p>
-                    <p>@venues.guest_capacity</p>
-                }
+            @foreach (Venues venues in Model.Venues)
+            {
+            <p>@venues.name</p>
+            <p>@venues.price_daily</p>
+            <p>@venues.guest_capacity</p>
+            }
             }
             else
             {
-                <br />
-                <br />
-                <p>There are no venues currently for this venue type.</p>
+            <br />
+            <br />
+            <p>There are no venues currently for this venue type.</p>
             }
 
         </div>
