@@ -53,9 +53,16 @@ INSERT INTO On_Site_Services(name) VALUES ('Cleaning');-->
                 {
                     <p>@venues.name</p>
                     <p>@venues.price_daily</p>
+                    <p>@venues.guest_capacity</p>
                 }
             }
-         
+            else
+            {
+                <br />
+                <br />
+                <p>There are no venues currently for this venue type.</p>
+            }
+
         </div>
 
         <div class="col-md-5">

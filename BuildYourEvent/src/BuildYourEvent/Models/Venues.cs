@@ -33,14 +33,14 @@ namespace BuildYourEvent.Models
         }
 
         [Required]
-        public float venue_size_sqf
+        public double venue_size_sqf
         {
             get;
             set;
         }
 
         [Required]
-        public decimal price_hourly
+        public Decimal price_hourly
         {
             get;
             set;
@@ -48,7 +48,7 @@ namespace BuildYourEvent.Models
 
         [Required]
         //[DataType(DataType.Currency)]
-        public decimal price_daily
+        public Decimal price_daily
         {
             get;
             set;
