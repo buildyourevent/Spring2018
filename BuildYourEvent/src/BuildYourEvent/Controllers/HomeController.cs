@@ -19,8 +19,9 @@ namespace BuildYourEvent.Controllers
         // GET: /<controller>/
         public IActionResult Index()
         {
-            var venueTypes = (from v in _context.Venue_Types select v).ToList();
-            return View(venueTypes);
+            //var venueTypes = (from v in _context.Venue_Types select v);
+            return View(_context.Venue_Types.ToList());
+
         }
         public IActionResult Results()
         {

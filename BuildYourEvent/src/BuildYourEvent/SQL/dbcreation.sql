@@ -1,4 +1,4 @@
-/*Right click on server, select "new query" and paste contents into the page that opens.
+﻿/*Right click on server, select "new query" and paste contents into the page that opens.
 Execute the query and the db and tables will be created */
 CREATE DATABASE [ByeDB]
 GO
@@ -309,3 +309,91 @@ INSERT INTO Event_Types(name) VALUES ('Influencer Event');
 INSERT INTO Event_Types(name) VALUES ('Interview');
 INSERT INTO Event_Types(name) VALUES ('Photo Shoot');
 INSERT INTO Event_Types(name) VALUES ('Activation');
+
+/*////////////////////////////////////2018/03/28 - new queries */
+INSERT INTO Amenities(name) VALUES ('Air conditioning');
+INSERT INTO Amenities(name) VALUES ('Industrial');
+INSERT INTO Amenities(name) VALUES ('Bathrooms');
+INSERT INTO Amenities(name) VALUES ('Heating');
+INSERT INTO Amenities(name) VALUES ('Kitchen');
+INSERT INTO Amenities(name) VALUES ('Large');
+INSERT INTO Amenities(name) VALUES ('Lighting');
+INSERT INTO Amenities(name) VALUES ('Lounge');
+INSERT INTO Amenities(name) VALUES ('Natural');
+INSERT INTO Amenities(name) VALUES ('Photography');
+INSERT INTO Amenities(name) VALUES ('Projectors');
+INSERT INTO Amenities(name) VALUES ('Screens');
+INSERT INTO Amenities(name) VALUES ('Sound');
+INSERT INTO Amenities(name) VALUES ('Stage');
+INSERT INTO Amenities(name) VALUES ('Tableware');
+INSERT INTO Amenities(name) VALUES ('TV');
+INSERT INTO Amenities(name) VALUES ('Whiteboard');
+INSERT INTO Amenities(name) VALUES ('Wifi');
+INSERT INTO Amenities(name) VALUES ('Microphones');
+INSERT INTO Amenities(name) VALUES ('Tables');
+INSERT INTO Amenities(name) VALUES ('Parking');
+INSERT INTO Amenities(name) VALUES ('Security');
+INSERT INTO Amenities(name) VALUES ('Security');
+INSERT INTO Amenities(name) VALUES ('Storage');
+INSERT INTO Amenities(name) VALUES ('Connected');
+INSERT INTO Amenities(name) VALUES ('Back');
+INSERT INTO Amenities(name) VALUES ('Wheelchair');
+INSERT INTO Amenities(name) VALUES ('Commercial');
+INSERT INTO Amenities(name) VALUES ('Basic');
+INSERT INTO Amenities(name) VALUES ('Water');
+INSERT INTO Amenities(name) VALUES ('Ground');
+INSERT INTO Amenities(name) VALUES ('Fitness');
+INSERT INTO Amenities(name) VALUES ('Outdoor');
+INSERT INTO Amenities(name) VALUES ('Elevator');
+INSERT INTO Amenities(name) VALUES ('Escalator');
+
+INSERT INTO venue_rules(name) VALUES ('Accepts children (0-10)');
+INSERT INTO venue_rules(name) VALUES ('Accepts teenagers (10-18)');
+INSERT INTO venue_rules(name) VALUES ('Adult only (19+)');
+INSERT INTO venue_rules(name) VALUES ('Cooking allowed');
+INSERT INTO venue_rules(name) VALUES ('External catering allowed');
+INSERT INTO venue_rules(name) VALUES ('Late night parties allowed');
+INSERT INTO venue_rules(name) VALUES ('Loud music allowed');
+INSERT INTO venue_rules(name) VALUES ('Open flame allowed');
+INSERT INTO venue_rules(name) VALUES ('Open to public events');
+INSERT INTO venue_rules(name) VALUES ('Selling alcohol allowed');
+INSERT INTO venue_rules(name) VALUES ('Serving alcohol allowed');
+INSERT INTO venue_rules(name) VALUES ('Quiet music allowed');
+INSERT INTO venue_rules(name) VALUES ('Ticket sales allowed');
+
+
+/* add One location to db*/
+INSERT INTO [dbo].[Locations]
+           ([city]
+           ,[province]
+           ,[country]
+           ,[street]
+           ,[postal_code]
+           ,[latitude]
+           ,[longitude])
+     VALUES
+           ('Ottawa','Ontario','Canada', '1200 St.Laurent', 'K1K 3B8', '45.422229','-75.638769');
+
+
+
+/*Mock data: contains one location at st.Laurent. */
+INSERT INTO venues(name,guest_capacity,venue_size_sqf,price_hourly,price_daily,fk_venue_type,fk_event_type,fk_amenity,fk_venue_rule,fk_style,fk_feature,fk_on_site_service,fk_location) VALUES ('Swift and Sons',514,3882,$676.86,$1237.95,2,54,32,11,3,4,1,1);
+INSERT INTO venues(name,guest_capacity,venue_size_sqf,price_hourly,price_daily,fk_venue_type,fk_event_type,fk_amenity,fk_venue_rule,fk_style,fk_feature,fk_on_site_service,fk_location) VALUES ('Mayer and Sons',953,3215,$996.45,$3184.58,6,114,10,1,4,18,1,1);
+INSERT INTO venues(name,guest_capacity,venue_size_sqf,price_hourly,price_daily,fk_venue_type,fk_event_type,fk_amenity,fk_venue_rule,fk_style,fk_feature,fk_on_site_service,fk_location) VALUES ('Little, Homenick and Wisoky',591,2701,$170.29,$1679.81,1,99,22,4,6,4,1,1);
+INSERT INTO venues(name,guest_capacity,venue_size_sqf,price_hourly,price_daily,fk_venue_type,fk_event_type,fk_amenity,fk_venue_rule,fk_style,fk_feature,fk_on_site_service,fk_location) VALUES ('Windler and Sons',657,3060,$220.70,$798.64,5,71,14,6,8,24,5,1);
+INSERT INTO venues(name,guest_capacity,venue_size_sqf,price_hourly,price_daily,fk_venue_type,fk_event_type,fk_amenity,fk_venue_rule,fk_style,fk_feature,fk_on_site_service,fk_location) VALUES ('Hansen-O''Keefe',328,1925,$174.62,$2900.18,7,43,1,3,4,20,1,1);
+INSERT INTO venues(name,guest_capacity,venue_size_sqf,price_hourly,price_daily,fk_venue_type,fk_event_type,fk_amenity,fk_venue_rule,fk_style,fk_feature,fk_on_site_service,fk_location) VALUES ('Friesen Group',235,2922,$997.36,$2525.22,13,83,29,10,2,24,2,1);
+INSERT INTO venues(name,guest_capacity,venue_size_sqf,price_hourly,price_daily,fk_venue_type,fk_event_type,fk_amenity,fk_venue_rule,fk_style,fk_feature,fk_on_site_service,fk_location) VALUES ('Hirthe-Cummerata',683,2842,$412.78,$2234.74,7,74,33,10,3,14,1,1);
+INSERT INTO venues(name,guest_capacity,venue_size_sqf,price_hourly,price_daily,fk_venue_type,fk_event_type,fk_amenity,fk_venue_rule,fk_style,fk_feature,fk_on_site_service,fk_location) VALUES ('Ryan, Konopelski and Kuhn',128,1856,$162.50,$2234.39,9,80,24,13,10,2,1,1);
+INSERT INTO venues(name,guest_capacity,venue_size_sqf,price_hourly,price_daily,fk_venue_type,fk_event_type,fk_amenity,fk_venue_rule,fk_style,fk_feature,fk_on_site_service,fk_location) VALUES ('Jacobson LLC',528,3155,$725.32,$2435.61,1,6,7,2,10,11,4,1);
+INSERT INTO venues(name,guest_capacity,venue_size_sqf,price_hourly,price_daily,fk_venue_type,fk_event_type,fk_amenity,fk_venue_rule,fk_style,fk_feature,fk_on_site_service,fk_location) VALUES ('Homenick and Sons',610,2197,$792.42,$3595.69,11,110,4,1,1,23,5,1);
+INSERT INTO venues(name,guest_capacity,venue_size_sqf,price_hourly,price_daily,fk_venue_type,fk_event_type,fk_amenity,fk_venue_rule,fk_style,fk_feature,fk_on_site_service,fk_location) VALUES ('Nolan-Armstrong',527,2479,$489.30,$1856.05,1,64,24,11,5,18,2,1);
+INSERT INTO venues(name,guest_capacity,venue_size_sqf,price_hourly,price_daily,fk_venue_type,fk_event_type,fk_amenity,fk_venue_rule,fk_style,fk_feature,fk_on_site_service,fk_location) VALUES ('Braun-Robel',767,3322,$196.74,$2018.43,14,24,18,3,6,17,2,1);
+INSERT INTO venues(name,guest_capacity,venue_size_sqf,price_hourly,price_daily,fk_venue_type,fk_event_type,fk_amenity,fk_venue_rule,fk_style,fk_feature,fk_on_site_service,fk_location) VALUES ('Mayer, Hickle and Heidenreich',990,2048,$675.91,$2709.49,13,82,31,11,9,8,4,1);
+INSERT INTO venues(name,guest_capacity,venue_size_sqf,price_hourly,price_daily,fk_venue_type,fk_event_type,fk_amenity,fk_venue_rule,fk_style,fk_feature,fk_on_site_service,fk_location) VALUES ('Bogisich-Morar',127,1724,$341.87,$1405.92,12,65,5,13,2,14,4,1);
+INSERT INTO venues(name,guest_capacity,venue_size_sqf,price_hourly,price_daily,fk_venue_type,fk_event_type,fk_amenity,fk_venue_rule,fk_style,fk_feature,fk_on_site_service,fk_location) VALUES ('Schaefer Group',242,1602,$212.01,$2830.76,13,87,18,2,6,8,2,1);
+INSERT INTO venues(name,guest_capacity,venue_size_sqf,price_hourly,price_daily,fk_venue_type,fk_event_type,fk_amenity,fk_venue_rule,fk_style,fk_feature,fk_on_site_service,fk_location) VALUES ('Hessel, Bode and Dicki',877,2175,$366.31,$2777.47,6,99,28,2,4,23,4,1);
+INSERT INTO venues(name,guest_capacity,venue_size_sqf,price_hourly,price_daily,fk_venue_type,fk_event_type,fk_amenity,fk_venue_rule,fk_style,fk_feature,fk_on_site_service,fk_location) VALUES ('Runolfsson-Stanton',753,1318,$606.21,$2550.45,14,114,10,6,10,7,1,1);
+INSERT INTO venues(name,guest_capacity,venue_size_sqf,price_hourly,price_daily,fk_venue_type,fk_event_type,fk_amenity,fk_venue_rule,fk_style,fk_feature,fk_on_site_service,fk_location) VALUES ('Stehr LLC',535,3712,$396.67,$682.37,3,15,3,5,7,8,5,1);
+INSERT INTO venues(name,guest_capacity,venue_size_sqf,price_hourly,price_daily,fk_venue_type,fk_event_type,fk_amenity,fk_venue_rule,fk_style,fk_feature,fk_on_site_service,fk_location) VALUES ('Glover, Raynor and Kertzmann',212,1746,$386.00,$3494.01,9,16,13,9,4,9,2,1);
+INSERT INTO venues(name,guest_capacity,venue_size_sqf,price_hourly,price_daily,fk_venue_type,fk_event_type,fk_amenity,fk_venue_rule,fk_style,fk_feature,fk_on_site_service,fk_location) VALUES ('Gusikowski-Orn',902,3721,$397.83,$1216.63,1,81,33,8,3,13,1,1);
