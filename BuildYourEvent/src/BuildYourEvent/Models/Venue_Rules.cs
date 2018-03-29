@@ -10,7 +10,7 @@ namespace BuildYourEvent.Models
     public class Venue_Rules
     {
         [Required]
-        public int id
+        public short id
         {
             get;
             set;

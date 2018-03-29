@@ -25,7 +25,7 @@ namespace BuildYourEvent.Models
         public DbSet<Vendors> Vendors { get; set; }
         public DbSet<Venue_Rules> Venue_Rules { get; set; }
         public DbSet<Venue_Types> Venue_Types { get; set; }
-        public DbSet<Venue> Venues { get; set; }
+        public DbSet<Venues> Venues { get; set; }
 
     }
 }

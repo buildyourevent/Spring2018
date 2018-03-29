@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Dynamic;
 using Microsoft.AspNetCore.Mvc;
 using BuildYourEvent.Models;
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
@@ -19,14 +20,14 @@ namespace BuildYourEvent.Controllers
         // GET: /<controller>/
         public IActionResult Index()
         {
-            //var venueTypes = (from v in _context.Venue_Types select v);
             return View(_context.Venue_Types.ToList());
-
         }
-        public IActionResult Results()
-        {
 
-            return View();
+        public IActionResult Results(short venueTypeId)
+        {
+            dynamic model = new ExpandoObject();
+            model.Venues = (from v in _context.Venues where v.fk_venue_type == venueTypeId select v).ToList();
+            return View(model);
         }
 
     }

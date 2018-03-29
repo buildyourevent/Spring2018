@@ -9,7 +9,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
 using BuildYourEvent.Models;
-
 namespace BuildYourEvent
 {
     public class Startup
@@ -22,7 +21,6 @@ namespace BuildYourEvent
             var connection = @"Server=localhost\SQLEXPRESS;Database=ByeDB;Trusted_Connection=True;MultipleActiveResultSets=true";
 
             services.AddDbContext<VenuesDataContext>(options => options.UseSqlServer(connection));
-            //comment
             services.AddMvc();
 
             services.AddMemoryCache();
