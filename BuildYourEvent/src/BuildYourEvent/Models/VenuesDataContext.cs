@@ -7,9 +7,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BuildYourEvent.Models
 {
-    public class VenuesContext : DbContext
+    public class VenuesDataContext : DbContext
     {
-        public VenuesContext(DbContextOptions<VenuesContext> options)
+        public VenuesDataContext(DbContextOptions<VenuesDataContext> options)
             : base(options)
         {
 
