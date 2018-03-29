@@ -10,7 +10,7 @@ namespace BuildYourEvent.Models
     public class On_Site_Services
     {
         [Required]
-        public int id
+        public short id
         {
             get;
             set;

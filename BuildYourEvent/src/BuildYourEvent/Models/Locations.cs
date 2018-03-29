@@ -10,7 +10,7 @@ namespace BuildYourEvent.Models
     public class Locations
     {
         [Required]
-        public int id
+        public short id
         {
             get;
             set;

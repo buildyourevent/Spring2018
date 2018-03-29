@@ -11,7 +11,7 @@ namespace BuildYourEvent.Models
     public class Venue
     {
         [Required]
-        public int id
+        public short id
         {
             get;
             set;
@@ -55,7 +55,7 @@ namespace BuildYourEvent.Models
 
         [ForeignKey("Venue_Types")]
         [Required]
-        public int fk_venue_type
+        public short fk_venue_type
         {
             get;
             set;
@@ -63,7 +63,7 @@ namespace BuildYourEvent.Models
 
         [ForeignKey("Event_Types")]
         [Required]
-        public int fk_event_type
+        public short fk_event_type
         {
             get;
             set;
@@ -71,7 +71,7 @@ namespace BuildYourEvent.Models
 
         [ForeignKey("Amenities")]
         [Required]
-        public int fk_amenity
+        public short fk_amenity
         {
             get;
             set;
@@ -79,7 +79,7 @@ namespace BuildYourEvent.Models
 
         [ForeignKey("Venue_Rules")]
         [Required]
-        public int fk_venue_rule
+        public short fk_venue_rule
         {
             get;
             set;
@@ -87,7 +87,7 @@ namespace BuildYourEvent.Models
 
         [ForeignKey("Styles")]
         [Required]
-        public int fk_style
+        public short fk_style
         {
             get;
             set;
@@ -95,7 +95,7 @@ namespace BuildYourEvent.Models
 
         [ForeignKey("Features")]
         [Required]
-        public int fk_feature
+        public short fk_feature
         {
             get;
             set;
@@ -103,7 +103,7 @@ namespace BuildYourEvent.Models
 
         [ForeignKey("On_Site_Services")]
         [Required]
-        public int fk_on_site_service
+        public short fk_on_site_service
         {
             get;
             set;
@@ -111,7 +111,7 @@ namespace BuildYourEvent.Models
 
         [ForeignKey("Locations")]
         [Required]
-        public int fk_location
+        public short fk_location
         {
             get;
             set;
