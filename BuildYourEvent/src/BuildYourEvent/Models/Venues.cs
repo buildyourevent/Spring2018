@@ -40,7 +40,6 @@ namespace BuildYourEvent.Models
         }
 
         [Required]
-       // [DataType(DataType.Currency)]
         public decimal price_hourly
         {
             get;
