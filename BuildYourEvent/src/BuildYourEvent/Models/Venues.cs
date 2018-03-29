@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BuildYourEvent.Models
 {
-    public class Venue
+    public class Venues
     {
         [Required]
         public short id
@@ -26,7 +26,7 @@ namespace BuildYourEvent.Models
         }
 
         [Required]
-        public int guest_capacity
+        public short guest_capacity
         {
             get;
             set;
@@ -40,14 +40,16 @@ namespace BuildYourEvent.Models
         }
 
         [Required]
-        public float price_hourly
+       // [DataType(DataType.Currency)]
+        public decimal price_hourly
         {
             get;
             set;
         }
 
         [Required]
-        public float price_daily
+        //[DataType(DataType.Currency)]
+        public decimal price_daily
         {
             get;
             set;
