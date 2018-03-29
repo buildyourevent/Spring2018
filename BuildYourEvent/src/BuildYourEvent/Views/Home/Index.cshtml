@@ -1,9 +1,9 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model IEnumerable<BuildYourEvent.Models.Venue_Types>
 @{
     Layout = "/Views/Shared/_Layout.cshtml";
+
 }
+
     <div class="container" id="photo">
         <div class="centered">
             <form class="form-inline" asp-action="Results">
@@ -11,10 +11,16 @@
                     <input type="text" class="form-control" placeholder="Ottawa, ON" disabled>
                 </div>
                 <div class="form-group">
-                    <select class="form-control" >
-                        <option selected disabled>Select venue style</option>
-                        <option>Indoor</option>
-                        <option>Outdoor</option>
+                    <select class="form-control" multiple="multiple">
+                        <option selected disabled>Select venue type</option>
+
+                            @foreach (var type in Model)
+                            {
+                                <option>@type.name</option>
+
+                            }
+
+                        }
                     </select>
                 </div>
                 <button type="submit" class="btn btn-default">Search</button>
