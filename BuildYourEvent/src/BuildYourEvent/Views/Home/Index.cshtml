@@ -10,15 +10,13 @@
                     <input type="text" class="form-control" placeholder="Ottawa, ON" disabled>
                 </div>
                 <div class="form-group">
-                    <select class="form-control" name="venueTypeId">
+                    <select class="form-control input-sm" name="venueTypeId">
                         <option selected disabled>Select venue type</option>
-
                             @foreach (var type in Model)
                             {
                                 <option value="@type.id">@type.name</option>
                             }
                     </select>
-
                 </div>
                 <button type="submit" class="btn btn-default">Search</button>
             </form>
@@ -83,3 +81,10 @@
 
         </div>
     </div>
+<script>
+    $('.dropdown-menu').on('click', 'a', function () {
+        var text = $(this).html();
+        var htmlText = text + ' <span class="caret"></span>';
+        $(this).closest('.dropdown').find('.dropdown-toggle').html(htmlText);
+    });
+</script>
