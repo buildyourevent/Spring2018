@@ -27,12 +27,12 @@ namespace BuildYourEvent.Controllers
         {
             dynamic model = new ExpandoObject();
             model.Venues = (from v in _context.Venues where v.fk_venue_type == venueTypeId select v).ToList();
-            model.venueStyles = _context.Styles.ToList();
+            model.VenueStyles = _context.Styles.ToList();
             model.Amenities = _context.Amenities.ToList();
             model.EventTypes = _context.Event_Types.ToList();
             model.Features = _context.Features.ToList();
-            model.onSiteServices = _context.On_Site_Services.ToList();
-            model.venueRules = _context.Venue_Rules.ToList();
+            model.OnSiteServices = _context.On_Site_Services.ToList();
+            model.VenueRules = _context.Venue_Rules.ToList();
             return View(model);
         }
 
