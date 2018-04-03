@@ -1,0 +1,46 @@
+﻿@model BuildYourEvent.Models.Users
+@{
+    Layout = "/Views/Shared/_Layout.cshtml";
+}
+<div class="container-fluid">
+    <form asp-controller="Home" asp-action="RegisterUser">
+        <fieldset style="width: 300px">
+            <br />
+            <br />
+            <legend>Register </legend>
+            <table>
+                <tr>
+                    <td>User Name</td>
+                    <td><input type="text" asp-for="user_name" required="required" /></td>
+                </tr>
+                <tr>
+                    <td>First Name</td>
+                    <td><input type="text" asp-for="firstName" required="required" /></td>
+                </tr>
+                <tr>
+                    <td>Last Name</td>
+                    <td><input type="text" asp-for="lastName" required="required" /></td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td><input type="email" asp-for="email" required="required" /></td>
+                </tr>
+                <tr>
+                    <td>Password</td>
+                    <td><input type="password" asp-for="password" required="required" /></td>
+                </tr>
+                <tr>
+                    <td>Account Type</td>
+                    <td>
+                        <select asp-for="fk_user_types">
+                            <option value=1>User</option>
+                            <option value=2>Venue Operator</option>
+                        </select>
+                    </td>
+                </tr>
+            </table>
+            <br />
+            <input type="submit" value="Register" />
+        </fieldset>
+    </form>
+</div>

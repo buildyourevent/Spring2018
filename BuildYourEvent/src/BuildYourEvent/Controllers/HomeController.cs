@@ -29,6 +29,10 @@ namespace BuildYourEvent.Controllers
             model.Venues = (from v in _context.Venues where v.fk_venue_type == venueTypeId select v).ToList();
             return View(model);
         }
+        public IActionResult Register()
+        {
 
+            return View();
+        }
     }
 }

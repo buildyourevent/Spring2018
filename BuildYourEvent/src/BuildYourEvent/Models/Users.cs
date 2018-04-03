@@ -16,7 +16,20 @@ namespace BuildYourEvent.Models
             get;
             set;
         }
-
+        [Required]
+        [StringLength(100)]
+        public String firstName
+        {
+            get;
+            set;
+        }
+        [Required]
+        [StringLength(100)]
+        public String lastName
+        {
+            get;
+            set;
+        }
         [Required]
         [StringLength(100)]
         public String user_name
