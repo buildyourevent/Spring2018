@@ -3,44 +3,52 @@
 @{
     Layout = "/Views/Shared/_Layout.cshtml";
 }
-
-<!--INSERT INTO On_Site_Services(name) VALUES ('Tech Support');
-INSERT INTO On_Site_Services(name) VALUES ('Catering');
-INSERT INTO On_Site_Services(name) VALUES ('Bartenders');
-INSERT INTO On_Site_Services(name) VALUES ('Servers');
-INSERT INTO On_Site_Services(name) VALUES ('Chef');
-INSERT INTO On_Site_Services(name) VALUES ('DJ');
-INSERT INTO On_Site_Services(name) VALUES ('Cleaning');-->
-
-
 <div class="container-fluid"  id="resultPage">
     <div class="row">
 
         <div class="col-md-7">
             <div class="container">
-                <form class="form-inline" href="#">
+                <form class="form-inline" action="#">
                     <div class="form-group">
-                        <label for="Date" class="col-md-6 col-form-label">Date</label>
                         <div class="col-sm-10">
-                            <input id="date" class="form-control" placeholder="Date" type="Date" required />
+                            <span>Venue Styles</span>
+                            <select class="form-control custom-select" name="venueStyle">
+                                @foreach (Styles style in Model.venueStyles)
+                                {
+                                    <option>@style.name</option>
+
+                                }
+                            </select>
+                        </div>
+                        <div class="col-sm-10">
+                            <span>Event Date</span>
+                            <input name="date" class="form-control" placeholder="Event Date" type="Date" />
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label for="on-site" class="col-md-6 col-form-label">On-site Services</label>
                         <div class="col-sm-10">
-                            <select class="form-control" id="on-site">
-                                <option>Catering</option>
-                                <option>Bartenders</option>
-                                <option>Servers</option>
-                                <option>Chef</option>
-                                <option>DJ</option>
-                                <option>Cleaning</option>
-                            </select>
+                            <label for="amount">Price per hour</label>
+                            <input type="text" name ="price"id="amount" readonly"/>
+                        </div>
+                        <div class="col-sm-10">
+                            <div id="slider-range-min"></div>
+                        </div>
+
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-10">
+                            <label for="guests">Guests</label>
+                            <input type="number" name="guests" id="guests" />
                         </div>
                     </div>
-                    <input id="submit" type="submit" class="btn btn-primary btn-lg" value="Filter" />
+                    <a href="#" type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal2">
+                        More Filters
+                    </a>
                 </form>
+
+                
                 <br />
                 <div class="container" id="filters"></div>
                 <div class="container-fluid">
@@ -85,39 +93,36 @@ INSERT INTO On_Site_Services(name) VALUES ('Cleaning');-->
     </div>
 </div>
 
+<!-- Modal -->
+<div class="modal right fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
 
-<script type="text/javascript">
-    function initMap() {
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel2">More Filters</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                
+            </div>
 
-        var currentLocation = new google.maps.LatLng("45.4215", "-75.6972");
+            <div class="modal-body">
+                <div class="container">
+                    <form class="form-inline" action="#">
+                        <div class="form-group">
+                            <div class="col-sm-10">
+                                <span>Amenities</span>
+                                <select class="form-control custom-select" name="">
+                                    @foreach (Amenities a in Model.Amentities)
+                                    {
+                                        <option>@a.name</option>
 
-        var myCenter = currentLocation;
-        var mapCanvas = document.getElementById("googleMap");
-        var mapOptions = {
-            center: myCenter,
-            zoom: 9
-        };
-        map = new google.maps.Map(mapCanvas, mapOptions);
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                    </form>
+                </div>
 
-        var marker = new google.maps.Marker({
-            position: currentLocation,
-            title: "First Venue!"
-        });
-        marker.setMap(map);
-    }
-
-    $("#on-site").change(function () {
-
-        var button = '<button class="btn btn-secondary">' + $(this).val(); + '</button>&nbsp;';
-        $("#filters").append(button);
-    });
-
-    $("#date").change(function () {
-        var button = '<button class="btn btn-secondary">' + $(this).val(); + '</button>&nbsp;';
-        $("#filters").append(button);
-    });
-
-
-
-</script>
+                </div><!-- modal-content -->
+            </div><!-- modal-dialog -->
+</div><!-- modal -->
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCDVghUsejUCZxuCLkGjcwb6usIOJivbnI&callback=initMap"></script>
