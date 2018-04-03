@@ -12,6 +12,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "BuildYourEvent", "src\BuildYourEvent\BuildYourEvent.xproj", "{9711FA0E-6183-46A0-BA5D-2BD19C544E38}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Model", "Model", "{52B3BFD9-D43D-4A82-BA11-DF230AA3E796}"
+	ProjectSection(SolutionItems) = preProject
+		Venue.cs = Venue.cs
+		VenueDataContext.cs = VenueDataContext.cs
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -28,5 +34,6 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{9711FA0E-6183-46A0-BA5D-2BD19C544E38} = {5931E112-8B2D-4D8F-B78C-D09A59EC5506}
+		{52B3BFD9-D43D-4A82-BA11-DF230AA3E796} = {5931E112-8B2D-4D8F-B78C-D09A59EC5506}
 	EndGlobalSection
 EndGlobal
