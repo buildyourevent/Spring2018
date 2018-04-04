@@ -14,6 +14,7 @@ namespace BuildYourEvent.Models
         {
 
         }
+        public DbSet<Bookings> Bookings { get; set; }
         public DbSet<Amenities> Amenities { get; set; }
         public DbSet<Event_Types> Event_Types { get; set; }
         public DbSet<Features> Features { get; set; }
@@ -34,6 +35,7 @@ namespace BuildYourEvent.Models
         public DbSet<Styles_Venues> Styles_Venues { get; set; }
         public DbSet<Venue_Rules_Venues> Venue_Rules_Venues { get; set; }
         public DbSet<Venue_Types_Venues> Venue_Types_Venues { get; set; }
-      
+        public DbSet<Order_States> Order_States { get; set; }
+
     }
 }
