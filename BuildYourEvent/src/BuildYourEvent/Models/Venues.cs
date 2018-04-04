@@ -54,65 +54,16 @@ namespace BuildYourEvent.Models
             set;
         }
 
-        [ForeignKey("Venue_Types")]
-        [Required]
-        public short fk_venue_type
-        {
-            get;
-            set;
-        }
-
-        [ForeignKey("Event_Types")]
-        [Required]
-        public short fk_event_type
-        {
-            get;
-            set;
-        }
-
-        [ForeignKey("Amenities")]
-        [Required]
-        public short fk_amenity
-        {
-            get;
-            set;
-        }
-
-        [ForeignKey("Venue_Rules")]
-        [Required]
-        public short fk_venue_rule
-        {
-            get;
-            set;
-        }
-
-        [ForeignKey("Styles")]
-        [Required]
-        public short fk_style
-        {
-            get;
-            set;
-        }
-
-        [ForeignKey("Features")]
-        [Required]
-        public short fk_feature
-        {
-            get;
-            set;
-        }
-
-        [ForeignKey("On_Site_Services")]
-        [Required]
-        public short fk_on_site_service
-        {
-            get;
-            set;
-        }
-
         [ForeignKey("Locations")]
         [Required]
         public short fk_location
+        {
+            get;
+            set;
+        }
+        [ForeignKey("Vendors")]
+        [Required]
+        public short fk_Vendor
         {
             get;
             set;
