@@ -27,7 +27,7 @@
             <ul class="nav navbar-nav navbar-right" id="headerFont">
                 <li><a href="#" class="nav-link"> What we do</a></li>
                 <li><a href="#" class="nav-link">Add your venue</a></li>
-                <li><a href="#" class="nav-link" onclick="document.getElementById('id01').style.display='block'">Login</a></li>
+                <li><a href="#" class="nav-link" data-toggle="modal" data-target="#myModal2">Login</a></li>
             </ul>
         </div>
     </nav>
@@ -37,7 +37,7 @@
     <br />
     <!-- Button trigger modal -->
     <!-- The Modal (contains the Sign Up form) -->
-    <div class="modal right fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
+    <div class="modal center fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <form asp-controller="Home" asp-action="Login">
