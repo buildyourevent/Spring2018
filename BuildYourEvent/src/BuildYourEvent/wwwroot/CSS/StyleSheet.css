@@ -127,7 +127,12 @@ button:hover {
      float: left;
      width: 50%;
 }
-
+.registerbtn {
+  padding: 14px 20px;
+  background-color: darkturquoise;
+  float: none;
+  width: 50%;
+}
 /* Add padding to container elements */
 .container {
   padding: 16px;

@@ -1,0 +1,25 @@
+﻿@model BuildYourEvent.Models.Users
+@{
+    Layout = "/Views/Shared/_Layout.cshtml";
+}
+<form asp-controller="Home" asp-action="RegisterVenue">
+    <div class="container">
+        <h1>Register Venue</h1>
+        <p>Please fill in the details of your venue.</p>
+        <hr>
+        <label for="name"><b>Name of Venue</b></label>
+        <input type="text" placeholder="Enter Name of Venue" name="venueName" required>
+        <label for="description"><b>Description</b></label>
+        <input type="text" size="5" placeholder="Enter a description" name="description" required>
+        <label for="picture"><b>Picture of Venue</b></label>
+        <br />
+        <label class="btn btn-default btn-file">
+            Browse <input type="file" style="display: none;" multiple>
+        </label>
+        <br />
+        <br />
+        <div class="clearfix">
+            <button type="submit" class="registerbtn">Sign Up</button>
+        </div>
+    </div>
+</form>

@@ -40,5 +40,10 @@ namespace BuildYourEvent.Controllers
 
             return View();
         }
+        public IActionResult RegisterVenue()
+        {
+
+            return View();
+        }
     }
 }
