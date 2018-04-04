@@ -26,7 +26,7 @@ namespace BuildYourEvent.Controllers
         public IActionResult Results(short venueTypeId)
         {
             dynamic model = new ExpandoObject();
-            model.Venues = (from v in _context.Venues where v.fk_venue_type == venueTypeId select v).ToList();
+            model.Venues = (from v in _context.Venue_Types_Venues where v.fk_Venue_Type == venueTypeId select v).ToList();
             model.VenueStyles = _context.Styles.ToList();
             model.Amenities = _context.Amenities.ToList();
             model.EventTypes = _context.Event_Types.ToList();
