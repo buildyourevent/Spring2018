@@ -5,122 +5,412 @@ GO
 USE [ByeDB]
 GO
 
+/****** Object:  Table [dbo].[Amenities]    Script Date: 4/3/2018 11:42:11 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Amenities](
+	[id] [smallint] IDENTITY(1,1) NOT NULL,
+	[name] [varchar](200) NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Amenities_Venues]    Script Date: 4/3/2018 11:42:11 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Amenities_Venues](
+	[fk_Venue] [smallint] NOT NULL,
+	[fk_Amenity] [smallint] NOT NULL
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Bookings]    Script Date: 4/3/2018 11:42:11 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Bookings](
+	[id] [smallint] IDENTITY(1,1) NOT NULL,
+	[fk_User] [smallint] NOT NULL,
+	[fk_Venue] [smallint] NOT NULL,
+	[fk_Order_State] [smallint] NOT NULL,
+ CONSTRAINT [PK_Bookings] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Event_Types]    Script Date: 4/3/2018 11:42:11 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Event_Types](
+	[id] [smallint] IDENTITY(1,1) NOT NULL,
+	[name] [varchar](200) NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Event_Types_Venues]    Script Date: 4/3/2018 11:42:11 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Event_Types_Venues](
+	[fk_Venue] [smallint] NOT NULL,
+	[fk_Event_Type] [smallint] NOT NULL
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Features]    Script Date: 4/3/2018 11:42:11 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Features](
+	[id] [smallint] IDENTITY(1,1) NOT NULL,
+	[name] [varchar](200) NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Features_Venues]    Script Date: 4/3/2018 11:42:12 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Features_Venues](
+	[fk_Venue] [smallint] NOT NULL,
+	[fk_Feature] [smallint] NOT NULL
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Locations]    Script Date: 4/3/2018 11:42:12 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Locations](
+	[id] [smallint] IDENTITY(1,1) NOT NULL,
+	[city] [varchar](200) NOT NULL,
+	[province] [varchar](200) NOT NULL,
+	[country] [varchar](200) NOT NULL,
+	[street] [varchar](200) NOT NULL,
+	[postal_code] [varchar](7) NOT NULL,
+	[latitude] [varchar](100) NOT NULL,
+	[longitude] [varchar](100) NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[On_Site_Services]    Script Date: 4/3/2018 11:42:12 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[On_Site_Services](
+	[id] [smallint] IDENTITY(1,1) NOT NULL,
+	[name] [varchar](200) NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[On_Site_Services_Venues]    Script Date: 4/3/2018 11:42:12 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[On_Site_Services_Venues](
+	[fk_Venue] [smallint] NOT NULL,
+	[fk_On_Site_Service] [smallint] NOT NULL
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Order_States]    Script Date: 4/3/2018 11:42:12 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Order_States](
+	[id] [smallint] IDENTITY(1,1) NOT NULL,
+	[name] [varchar](50) NOT NULL,
+ CONSTRAINT [PK_Order_States] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Photos]    Script Date: 4/3/2018 11:42:12 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Photos](
+	[id] [smallint] IDENTITY(1,1) NOT NULL,
+	[filename] [varchar](2048) NOT NULL,
+	[url] [varchar](2048) NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Photos_Venues]    Script Date: 4/3/2018 11:42:12 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Photos_Venues](
+	[fk_Venue] [smallint] NOT NULL,
+	[fk_Photo] [smallint] NOT NULL
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Styles]    Script Date: 4/3/2018 11:42:12 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Styles](
+	[id] [smallint] IDENTITY(1,1) NOT NULL,
+	[name] [varchar](200) NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Styles_Venues]    Script Date: 4/3/2018 11:42:12 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Styles_Venues](
+	[fk_Venue] [smallint] NOT NULL,
+	[fk_Style] [smallint] NOT NULL
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Users]    Script Date: 4/3/2018 11:42:12 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Users](
+	[id] [smallint] IDENTITY(1,1) NOT NULL,
+	[user_name] [varchar](100) NOT NULL,
+	[password] [varchar](200) NOT NULL,
+	[email] [varchar](200) NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Vendors]    Script Date: 4/3/2018 11:42:12 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Vendors](
+	[id] [smallint] IDENTITY(1,1) NOT NULL,
+	[fk_User] [smallint] NOT NULL,
+ CONSTRAINT [PK_Vendors] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Venue_Rules]    Script Date: 4/3/2018 11:42:12 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Venue_Rules](
+	[id] [smallint] IDENTITY(1,1) NOT NULL,
+	[name] [varchar](200) NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Venue_Rules_Venues]    Script Date: 4/3/2018 11:42:12 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Venue_Rules_Venues](
+	[fk_Venue] [smallint] NOT NULL,
+	[fk_Venue_Rule] [smallint] NOT NULL
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Venue_Types]    Script Date: 4/3/2018 11:42:13 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Venue_Types](
+	[id] [smallint] IDENTITY(1,1) NOT NULL,
+	[name] [varchar](200) NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Venue_Types_Venues]    Script Date: 4/3/2018 11:42:13 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Venue_Types_Venues](
+	[fk_Venue] [smallint] NOT NULL,
+	[fk_Venue_Type] [smallint] NOT NULL
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Venues]    Script Date: 4/3/2018 11:42:13 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Venues](
+	[id] [smallint] IDENTITY(1,1) NOT NULL,
+	[name] [varchar](200) NOT NULL,
+	[guest_capacity] [smallint] NOT NULL,
+	[venue_size_sqf] [float] NOT NULL,
+	[price_hourly] [decimal](10, 0) NULL,
+	[price_daily] [decimal](10, 0) NULL,
+	[fk_Location] [smallint] NOT NULL,
+	[fk_Vendor] [smallint] NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+ALTER TABLE [dbo].[Amenities_Venues]  WITH CHECK ADD  CONSTRAINT [FK_Amenities_Venues_Amenities] FOREIGN KEY([fk_Amenity])
+REFERENCES [dbo].[Amenities] ([id])
+GO
+ALTER TABLE [dbo].[Amenities_Venues] CHECK CONSTRAINT [FK_Amenities_Venues_Amenities]
+GO
+ALTER TABLE [dbo].[Amenities_Venues]  WITH CHECK ADD  CONSTRAINT [FK_Amenities_Venues_Venues] FOREIGN KEY([fk_Venue])
+REFERENCES [dbo].[Venues] ([id])
+GO
+ALTER TABLE [dbo].[Amenities_Venues] CHECK CONSTRAINT [FK_Amenities_Venues_Venues]
+GO
+ALTER TABLE [dbo].[Bookings]  WITH CHECK ADD  CONSTRAINT [FK_Bookings_Order_States] FOREIGN KEY([fk_Order_State])
+REFERENCES [dbo].[Order_States] ([id])
+GO
+ALTER TABLE [dbo].[Bookings] CHECK CONSTRAINT [FK_Bookings_Order_States]
+GO
+ALTER TABLE [dbo].[Bookings]  WITH CHECK ADD  CONSTRAINT [FK_Bookings_Users] FOREIGN KEY([fk_User])
+REFERENCES [dbo].[Users] ([id])
+GO
+ALTER TABLE [dbo].[Bookings] CHECK CONSTRAINT [FK_Bookings_Users]
+GO
+ALTER TABLE [dbo].[Bookings]  WITH CHECK ADD  CONSTRAINT [FK_Bookings_Venues] FOREIGN KEY([fk_Venue])
+REFERENCES [dbo].[Venues] ([id])
+GO
+ALTER TABLE [dbo].[Bookings] CHECK CONSTRAINT [FK_Bookings_Venues]
+GO
+ALTER TABLE [dbo].[Event_Types_Venues]  WITH CHECK ADD  CONSTRAINT [FK_Event_Types_Venues_Event_Types] FOREIGN KEY([fk_Event_Type])
+REFERENCES [dbo].[Event_Types] ([id])
+GO
+ALTER TABLE [dbo].[Event_Types_Venues] CHECK CONSTRAINT [FK_Event_Types_Venues_Event_Types]
+GO
+ALTER TABLE [dbo].[Event_Types_Venues]  WITH CHECK ADD  CONSTRAINT [FK_Event_Types_Venues_Venues] FOREIGN KEY([fk_Venue])
+REFERENCES [dbo].[Venues] ([id])
+GO
+ALTER TABLE [dbo].[Event_Types_Venues] CHECK CONSTRAINT [FK_Event_Types_Venues_Venues]
+GO
+ALTER TABLE [dbo].[Features_Venues]  WITH CHECK ADD  CONSTRAINT [FK_Features_Venues_Features] FOREIGN KEY([fk_Feature])
+REFERENCES [dbo].[Features] ([id])
+GO
+ALTER TABLE [dbo].[Features_Venues] CHECK CONSTRAINT [FK_Features_Venues_Features]
+GO
+ALTER TABLE [dbo].[Features_Venues]  WITH CHECK ADD  CONSTRAINT [FK_Features_Venues_Venues] FOREIGN KEY([fk_Venue])
+REFERENCES [dbo].[Venues] ([id])
+GO
+ALTER TABLE [dbo].[Features_Venues] CHECK CONSTRAINT [FK_Features_Venues_Venues]
+GO
+ALTER TABLE [dbo].[On_Site_Services_Venues]  WITH CHECK ADD  CONSTRAINT [FK_On_Site_Services_Venues_On_Site_Services] FOREIGN KEY([fk_On_Site_Service])
+REFERENCES [dbo].[On_Site_Services] ([id])
+GO
+ALTER TABLE [dbo].[On_Site_Services_Venues] CHECK CONSTRAINT [FK_On_Site_Services_Venues_On_Site_Services]
+GO
+ALTER TABLE [dbo].[On_Site_Services_Venues]  WITH CHECK ADD  CONSTRAINT [FK_On_Site_Services_Venues_Venues] FOREIGN KEY([fk_Venue])
+REFERENCES [dbo].[Venues] ([id])
+GO
+ALTER TABLE [dbo].[On_Site_Services_Venues] CHECK CONSTRAINT [FK_On_Site_Services_Venues_Venues]
+GO
+ALTER TABLE [dbo].[Photos_Venues]  WITH CHECK ADD  CONSTRAINT [FK_Photos_Venues_Photos] FOREIGN KEY([fk_Photo])
+REFERENCES [dbo].[Photos] ([id])
+GO
+ALTER TABLE [dbo].[Photos_Venues] CHECK CONSTRAINT [FK_Photos_Venues_Photos]
+GO
+ALTER TABLE [dbo].[Photos_Venues]  WITH CHECK ADD  CONSTRAINT [FK_Photos_Venues_Venues] FOREIGN KEY([fk_Venue])
+REFERENCES [dbo].[Venues] ([id])
+GO
+ALTER TABLE [dbo].[Photos_Venues] CHECK CONSTRAINT [FK_Photos_Venues_Venues]
+GO
+ALTER TABLE [dbo].[Styles_Venues]  WITH CHECK ADD  CONSTRAINT [FK_Styles_Venues_Styles] FOREIGN KEY([fk_Style])
+REFERENCES [dbo].[Styles] ([id])
+GO
+ALTER TABLE [dbo].[Styles_Venues] CHECK CONSTRAINT [FK_Styles_Venues_Styles]
+GO
+ALTER TABLE [dbo].[Styles_Venues]  WITH CHECK ADD  CONSTRAINT [FK_Styles_Venues_Venues] FOREIGN KEY([fk_Venue])
+REFERENCES [dbo].[Venues] ([id])
+GO
+ALTER TABLE [dbo].[Styles_Venues] CHECK CONSTRAINT [FK_Styles_Venues_Venues]
+GO
+ALTER TABLE [dbo].[Vendors]  WITH CHECK ADD  CONSTRAINT [Vendors_fk0] FOREIGN KEY([fk_User])
+REFERENCES [dbo].[Users] ([id])
+GO
+ALTER TABLE [dbo].[Vendors] CHECK CONSTRAINT [Vendors_fk0]
+GO
+ALTER TABLE [dbo].[Venue_Rules_Venues]  WITH CHECK ADD  CONSTRAINT [FK_Venue_Rules_Venues_Venue_Rules] FOREIGN KEY([fk_Venue_Rule])
+REFERENCES [dbo].[Venue_Rules] ([id])
+GO
+ALTER TABLE [dbo].[Venue_Rules_Venues] CHECK CONSTRAINT [FK_Venue_Rules_Venues_Venue_Rules]
+GO
+ALTER TABLE [dbo].[Venue_Rules_Venues]  WITH CHECK ADD  CONSTRAINT [FK_Venue_Rules_Venues_Venues] FOREIGN KEY([fk_Venue])
+REFERENCES [dbo].[Venues] ([id])
+GO
+ALTER TABLE [dbo].[Venue_Rules_Venues] CHECK CONSTRAINT [FK_Venue_Rules_Venues_Venues]
+GO
+ALTER TABLE [dbo].[Venue_Types_Venues]  WITH CHECK ADD  CONSTRAINT [FK_Venue_Types_Venues_Venue_Types] FOREIGN KEY([fk_Venue_Type])
+REFERENCES [dbo].[Venue_Types] ([id])
+GO
+ALTER TABLE [dbo].[Venue_Types_Venues] CHECK CONSTRAINT [FK_Venue_Types_Venues_Venue_Types]
+GO
+ALTER TABLE [dbo].[Venue_Types_Venues]  WITH CHECK ADD  CONSTRAINT [FK_Venue_Types_Venues_Venues] FOREIGN KEY([fk_Venue])
+REFERENCES [dbo].[Venues] ([id])
+GO
+ALTER TABLE [dbo].[Venue_Types_Venues] CHECK CONSTRAINT [FK_Venue_Types_Venues_Venues]
+GO
+ALTER TABLE [dbo].[Venues]  WITH CHECK ADD  CONSTRAINT [FK_Venues_Locations] FOREIGN KEY([fk_Location])
+REFERENCES [dbo].[Locations] ([id])
+GO
+ALTER TABLE [dbo].[Venues] CHECK CONSTRAINT [FK_Venues_Locations]
+GO
+ALTER TABLE [dbo].[Venues]  WITH CHECK ADD  CONSTRAINT [FK_Venues_Vendors] FOREIGN KEY([fk_Vendor])
+REFERENCES [dbo].[Vendors] ([id])
+GO
+ALTER TABLE [dbo].[Venues] CHECK CONSTRAINT [FK_Venues_Vendors]
+GO
 
-CREATE TABLE Locations (
-	[id] smallint NOT NULL IDENTITY,
-	[city] varchar(200) NOT NULL,
-	[province] varchar(200) NOT NULL,
-	[country] varchar(200) NOT NULL,
-	[street] varchar(200) NOT NULL,
-	[postal_code] varchar(7) NOT NULL,
-	[latitude] varchar(100) NOT NULL,
-	[longitude] varchar(100) NOT NULL,
-	PRIMARY KEY ([id])
-);
 
-CREATE TABLE Event_Types (
-	[id] smallint NOT NULL IDENTITY,
-	[name] varchar(200) NOT NULL,
-	PRIMARY KEY ([id])
-);
-
-CREATE TABLE Venue_Types (
-	[id] smallint NOT NULL IDENTITY,
-	[name] varchar(200) NOT NULL,
-	PRIMARY KEY ([id])
-);
-
-CREATE TABLE Venues (
-	[id] smallint NOT NULL IDENTITY,
-	[name] varchar(200) NOT NULL,
-	[guest_capacity] smallint NOT NULL,
-	[venue_size_sqf] FLOAT NOT NULL,
-	[price_hourly] DECIMAL(10,0),
-	[price_daily] DECIMAL(10,0),
-	[fk_venue_type] smallint NOT NULL,
-	[fk_event_type] smallint NOT NULL,
-	[fk_amenity] smallint NOT NULL,
-	[fk_venue_rule] smallint NOT NULL,
-	[fk_style] smallint NOT NULL,
-	[fk_feature] smallint NOT NULL,
-	[fk_on_site_service] smallint NOT NULL,
-	[fk_location] smallint NOT NULL,
-	PRIMARY KEY ([id])
-);
-
-CREATE TABLE Amenities (
-	[id] smallint NOT NULL IDENTITY,
-	[name] varchar(200) NOT NULL,
-	PRIMARY KEY ([id])
-);
-
-CREATE TABLE Venue_Rules (
-	[id] smallint NOT NULL IDENTITY,
-	[name] varchar(200) NOT NULL,
-	PRIMARY KEY ([id])
-);
-
-CREATE TABLE Styles (
-	[id] smallint NOT NULL IDENTITY,
-	[name] varchar(200) NOT NULL,
-	PRIMARY KEY ([id])
-);
-
-CREATE TABLE Features (
-	[id] smallint NOT NULL IDENTITY,
-	[name] varchar(200) NOT NULL,
-	PRIMARY KEY ([id])
-);
-
-CREATE TABLE On_Site_Services (
-	[id] smallint NOT NULL IDENTITY,
-	[name] varchar(200) NOT NULL,
-	PRIMARY KEY ([id])
-);
-
-CREATE TABLE Users (
-	[id] smallint NOT NULL IDENTITY,
-	[user_name] varchar(100) NOT NULL,
-	[password] varchar(200) NOT NULL,
-	[email] varchar(200) NOT NULL,
-	[fk_user_type] smallint NOT NULL,
-	PRIMARY KEY ([id])
-);
-
-CREATE TABLE User_Types (
-	[id] smallint NOT NULL IDENTITY,
-	[name] varchar(200) NOT NULL,
-	PRIMARY KEY ([id])
-);
-
-CREATE TABLE Vendors (
-	[id] smallint NOT NULL IDENTITY,
-	[fk_user] smallint NOT NULL,
-	[fk_venue] smallint NOT NULL
-);
-
-ALTER TABLE [Venues] ADD CONSTRAINT [Venues_fk0] FOREIGN KEY ([fk_venue_type]) REFERENCES Venue_Types([id]);
-
-ALTER TABLE [Venues] ADD CONSTRAINT [Venues_fk1] FOREIGN KEY ([fk_event_type]) REFERENCES Event_Types([id]);
-
-ALTER TABLE [Venues] ADD CONSTRAINT [Venues_fk2] FOREIGN KEY ([fk_amenity]) REFERENCES Amenities([id]);
-
-ALTER TABLE [Venues] ADD CONSTRAINT [Venues_fk3] FOREIGN KEY ([fk_venue_rule]) REFERENCES Venue_Rules([id]);
-
-ALTER TABLE [Venues] ADD CONSTRAINT [Venues_fk4] FOREIGN KEY ([fk_style]) REFERENCES Styles([id]);
-
-ALTER TABLE [Venues] ADD CONSTRAINT [Venues_fk5] FOREIGN KEY ([fk_feature]) REFERENCES Features([id]);
-
-ALTER TABLE [Venues] ADD CONSTRAINT [Venues_fk6] FOREIGN KEY ([fk_on_site_service]) REFERENCES On_Site_Services([id]);
-
-ALTER TABLE [Venues] ADD CONSTRAINT [Venues_fk7] FOREIGN KEY ([fk_location]) REFERENCES Locations([id]);
-
-ALTER TABLE [Users] ADD CONSTRAINT [Users_fk0] FOREIGN KEY ([fk_user_type]) REFERENCES User_Types([id]);
-
-ALTER TABLE [Vendors] ADD CONSTRAINT [Vendors_fk0] FOREIGN KEY ([fk_user]) REFERENCES Users([id]);
-
-ALTER TABLE [Vendors] ADD CONSTRAINT [Vendors_fk1] FOREIGN KEY ([fk_venue]) REFERENCES Venues([id]);
-
+/*--------------------DATA FOR TABLES ------------------------*/
 INSERT INTO Features(name) VALUES ('Art');
 INSERT INTO Features(name) VALUES ('Bar');
 INSERT INTO Features(name) VALUES ('Bathtub/shower');
@@ -374,26 +664,4 @@ INSERT INTO [dbo].[Locations]
      VALUES
            ('Ottawa','Ontario','Canada', '1200 St.Laurent', 'K1K 3B8', '45.422229','-75.638769');
 
-
-
-/*Mock data: contains one location at st.Laurent. */
-INSERT INTO venues(name,guest_capacity,venue_size_sqf,price_hourly,price_daily,fk_venue_type,fk_event_type,fk_amenity,fk_venue_rule,fk_style,fk_feature,fk_on_site_service,fk_location) VALUES ('Swift and Sons',514,3882,$676.86,$1237.95,2,54,32,11,3,4,1,1);
-INSERT INTO venues(name,guest_capacity,venue_size_sqf,price_hourly,price_daily,fk_venue_type,fk_event_type,fk_amenity,fk_venue_rule,fk_style,fk_feature,fk_on_site_service,fk_location) VALUES ('Mayer and Sons',953,3215,$996.45,$3184.58,6,114,10,1,4,18,1,1);
-INSERT INTO venues(name,guest_capacity,venue_size_sqf,price_hourly,price_daily,fk_venue_type,fk_event_type,fk_amenity,fk_venue_rule,fk_style,fk_feature,fk_on_site_service,fk_location) VALUES ('Little, Homenick and Wisoky',591,2701,$170.29,$1679.81,1,99,22,4,6,4,1,1);
-INSERT INTO venues(name,guest_capacity,venue_size_sqf,price_hourly,price_daily,fk_venue_type,fk_event_type,fk_amenity,fk_venue_rule,fk_style,fk_feature,fk_on_site_service,fk_location) VALUES ('Windler and Sons',657,3060,$220.70,$798.64,5,71,14,6,8,24,5,1);
-INSERT INTO venues(name,guest_capacity,venue_size_sqf,price_hourly,price_daily,fk_venue_type,fk_event_type,fk_amenity,fk_venue_rule,fk_style,fk_feature,fk_on_site_service,fk_location) VALUES ('Hansen-O''Keefe',328,1925,$174.62,$2900.18,7,43,1,3,4,20,1,1);
-INSERT INTO venues(name,guest_capacity,venue_size_sqf,price_hourly,price_daily,fk_venue_type,fk_event_type,fk_amenity,fk_venue_rule,fk_style,fk_feature,fk_on_site_service,fk_location) VALUES ('Friesen Group',235,2922,$997.36,$2525.22,13,83,29,10,2,24,2,1);
-INSERT INTO venues(name,guest_capacity,venue_size_sqf,price_hourly,price_daily,fk_venue_type,fk_event_type,fk_amenity,fk_venue_rule,fk_style,fk_feature,fk_on_site_service,fk_location) VALUES ('Hirthe-Cummerata',683,2842,$412.78,$2234.74,7,74,33,10,3,14,1,1);
-INSERT INTO venues(name,guest_capacity,venue_size_sqf,price_hourly,price_daily,fk_venue_type,fk_event_type,fk_amenity,fk_venue_rule,fk_style,fk_feature,fk_on_site_service,fk_location) VALUES ('Ryan, Konopelski and Kuhn',128,1856,$162.50,$2234.39,9,80,24,13,10,2,1,1);
-INSERT INTO venues(name,guest_capacity,venue_size_sqf,price_hourly,price_daily,fk_venue_type,fk_event_type,fk_amenity,fk_venue_rule,fk_style,fk_feature,fk_on_site_service,fk_location) VALUES ('Jacobson LLC',528,3155,$725.32,$2435.61,1,6,7,2,10,11,4,1);
-INSERT INTO venues(name,guest_capacity,venue_size_sqf,price_hourly,price_daily,fk_venue_type,fk_event_type,fk_amenity,fk_venue_rule,fk_style,fk_feature,fk_on_site_service,fk_location) VALUES ('Homenick and Sons',610,2197,$792.42,$3595.69,11,110,4,1,1,23,5,1);
-INSERT INTO venues(name,guest_capacity,venue_size_sqf,price_hourly,price_daily,fk_venue_type,fk_event_type,fk_amenity,fk_venue_rule,fk_style,fk_feature,fk_on_site_service,fk_location) VALUES ('Nolan-Armstrong',527,2479,$489.30,$1856.05,1,64,24,11,5,18,2,1);
-INSERT INTO venues(name,guest_capacity,venue_size_sqf,price_hourly,price_daily,fk_venue_type,fk_event_type,fk_amenity,fk_venue_rule,fk_style,fk_feature,fk_on_site_service,fk_location) VALUES ('Braun-Robel',767,3322,$196.74,$2018.43,14,24,18,3,6,17,2,1);
-INSERT INTO venues(name,guest_capacity,venue_size_sqf,price_hourly,price_daily,fk_venue_type,fk_event_type,fk_amenity,fk_venue_rule,fk_style,fk_feature,fk_on_site_service,fk_location) VALUES ('Mayer, Hickle and Heidenreich',990,2048,$675.91,$2709.49,13,82,31,11,9,8,4,1);
-INSERT INTO venues(name,guest_capacity,venue_size_sqf,price_hourly,price_daily,fk_venue_type,fk_event_type,fk_amenity,fk_venue_rule,fk_style,fk_feature,fk_on_site_service,fk_location) VALUES ('Bogisich-Morar',127,1724,$341.87,$1405.92,12,65,5,13,2,14,4,1);
-INSERT INTO venues(name,guest_capacity,venue_size_sqf,price_hourly,price_daily,fk_venue_type,fk_event_type,fk_amenity,fk_venue_rule,fk_style,fk_feature,fk_on_site_service,fk_location) VALUES ('Schaefer Group',242,1602,$212.01,$2830.76,13,87,18,2,6,8,2,1);
-INSERT INTO venues(name,guest_capacity,venue_size_sqf,price_hourly,price_daily,fk_venue_type,fk_event_type,fk_amenity,fk_venue_rule,fk_style,fk_feature,fk_on_site_service,fk_location) VALUES ('Hessel, Bode and Dicki',877,2175,$366.31,$2777.47,6,99,28,2,4,23,4,1);
-INSERT INTO venues(name,guest_capacity,venue_size_sqf,price_hourly,price_daily,fk_venue_type,fk_event_type,fk_amenity,fk_venue_rule,fk_style,fk_feature,fk_on_site_service,fk_location) VALUES ('Runolfsson-Stanton',753,1318,$606.21,$2550.45,14,114,10,6,10,7,1,1);
-INSERT INTO venues(name,guest_capacity,venue_size_sqf,price_hourly,price_daily,fk_venue_type,fk_event_type,fk_amenity,fk_venue_rule,fk_style,fk_feature,fk_on_site_service,fk_location) VALUES ('Stehr LLC',535,3712,$396.67,$682.37,3,15,3,5,7,8,5,1);
-INSERT INTO venues(name,guest_capacity,venue_size_sqf,price_hourly,price_daily,fk_venue_type,fk_event_type,fk_amenity,fk_venue_rule,fk_style,fk_feature,fk_on_site_service,fk_location) VALUES ('Glover, Raynor and Kertzmann',212,1746,$386.00,$3494.01,9,16,13,9,4,9,2,1);
-INSERT INTO venues(name,guest_capacity,venue_size_sqf,price_hourly,price_daily,fk_venue_type,fk_event_type,fk_amenity,fk_venue_rule,fk_style,fk_feature,fk_on_site_service,fk_location) VALUES ('Gusikowski-Orn',902,3721,$397.83,$1216.63,1,81,33,8,3,13,1,1);
+/*TBD: Add one Test vendor for dummy data*/
