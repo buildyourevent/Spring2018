@@ -7,10 +7,12 @@
         <div class="centered">
             <form class="form-inline" asp-action="Results" asp-route-venueTypeId="venueTypeId">
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Ottawa, ON" disabled>
+                    <input class="form-control" placeholder="Ottawa, ON" disabled>
                 </div>
                 <div class="form-group">
-                    <select class="form-control input-sm" name="venueTypeId">
+                    <select class="form-control 
+                            
+                            -sm custom-select" name="venueTypeId">
                         <option selected disabled>Select venue type</option>
                             @foreach (var type in Model)
                             {
