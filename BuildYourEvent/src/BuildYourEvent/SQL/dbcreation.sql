@@ -4,8 +4,7 @@ CREATE DATABASE [ByeDB]
 GO
 USE [ByeDB]
 GO
-
-/****** Object:  Table [dbo].[Amenities]    Script Date: 4/3/2018 11:42:11 PM ******/
+/****** Object:  Table [dbo].[Amenities]    Script Date: 4/4/2018 6:40:14 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -19,7 +18,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Amenities_Venues]    Script Date: 4/3/2018 11:42:11 PM ******/
+/****** Object:  Table [dbo].[Amenities_Venues]    Script Date: 4/4/2018 6:40:14 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -29,7 +28,7 @@ CREATE TABLE [dbo].[Amenities_Venues](
 	[fk_Amenity] [smallint] NOT NULL
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Bookings]    Script Date: 4/3/2018 11:42:11 PM ******/
+/****** Object:  Table [dbo].[Bookings]    Script Date: 4/4/2018 6:40:14 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -45,7 +44,7 @@ CREATE TABLE [dbo].[Bookings](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Event_Types]    Script Date: 4/3/2018 11:42:11 PM ******/
+/****** Object:  Table [dbo].[Event_Types]    Script Date: 4/4/2018 6:40:15 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -59,7 +58,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Event_Types_Venues]    Script Date: 4/3/2018 11:42:11 PM ******/
+/****** Object:  Table [dbo].[Event_Types_Venues]    Script Date: 4/4/2018 6:40:15 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -69,7 +68,7 @@ CREATE TABLE [dbo].[Event_Types_Venues](
 	[fk_Event_Type] [smallint] NOT NULL
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Features]    Script Date: 4/3/2018 11:42:11 PM ******/
+/****** Object:  Table [dbo].[Features]    Script Date: 4/4/2018 6:40:15 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -83,7 +82,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Features_Venues]    Script Date: 4/3/2018 11:42:12 PM ******/
+/****** Object:  Table [dbo].[Features_Venues]    Script Date: 4/4/2018 6:40:15 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -93,7 +92,7 @@ CREATE TABLE [dbo].[Features_Venues](
 	[fk_Feature] [smallint] NOT NULL
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Locations]    Script Date: 4/3/2018 11:42:12 PM ******/
+/****** Object:  Table [dbo].[Locations]    Script Date: 4/4/2018 6:40:15 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -113,7 +112,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[On_Site_Services]    Script Date: 4/3/2018 11:42:12 PM ******/
+/****** Object:  Table [dbo].[On_Site_Services]    Script Date: 4/4/2018 6:40:15 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -127,7 +126,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[On_Site_Services_Venues]    Script Date: 4/3/2018 11:42:12 PM ******/
+/****** Object:  Table [dbo].[On_Site_Services_Venues]    Script Date: 4/4/2018 6:40:15 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -137,7 +136,7 @@ CREATE TABLE [dbo].[On_Site_Services_Venues](
 	[fk_On_Site_Service] [smallint] NOT NULL
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Order_States]    Script Date: 4/3/2018 11:42:12 PM ******/
+/****** Object:  Table [dbo].[Order_States]    Script Date: 4/4/2018 6:40:15 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -151,7 +150,7 @@ CREATE TABLE [dbo].[Order_States](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Photos]    Script Date: 4/3/2018 11:42:12 PM ******/
+/****** Object:  Table [dbo].[Photos]    Script Date: 4/4/2018 6:40:15 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -166,7 +165,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Photos_Venues]    Script Date: 4/3/2018 11:42:12 PM ******/
+/****** Object:  Table [dbo].[Photos_Venues]    Script Date: 4/4/2018 6:40:15 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -176,7 +175,7 @@ CREATE TABLE [dbo].[Photos_Venues](
 	[fk_Photo] [smallint] NOT NULL
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Styles]    Script Date: 4/3/2018 11:42:12 PM ******/
+/****** Object:  Table [dbo].[Styles]    Script Date: 4/4/2018 6:40:15 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -190,7 +189,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Styles_Venues]    Script Date: 4/3/2018 11:42:12 PM ******/
+/****** Object:  Table [dbo].[Styles_Venues]    Script Date: 4/4/2018 6:40:15 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -200,7 +199,7 @@ CREATE TABLE [dbo].[Styles_Venues](
 	[fk_Style] [smallint] NOT NULL
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Users]    Script Date: 4/3/2018 11:42:12 PM ******/
+/****** Object:  Table [dbo].[Users]    Script Date: 4/4/2018 6:40:15 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -210,13 +209,15 @@ CREATE TABLE [dbo].[Users](
 	[user_name] [varchar](100) NOT NULL,
 	[password] [varchar](200) NOT NULL,
 	[email] [varchar](200) NOT NULL,
+	[first_name] [varchar](100) NULL,
+	[last_name] [varchar](100) NULL,
 PRIMARY KEY CLUSTERED 
 (
 	[id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Vendors]    Script Date: 4/3/2018 11:42:12 PM ******/
+/****** Object:  Table [dbo].[Vendors]    Script Date: 4/4/2018 6:40:15 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -224,13 +225,14 @@ GO
 CREATE TABLE [dbo].[Vendors](
 	[id] [smallint] IDENTITY(1,1) NOT NULL,
 	[fk_User] [smallint] NOT NULL,
+	[company_name] [varchar](50) NULL,
  CONSTRAINT [PK_Vendors] PRIMARY KEY CLUSTERED 
 (
 	[id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Venue_Rules]    Script Date: 4/3/2018 11:42:12 PM ******/
+/****** Object:  Table [dbo].[Venue_Rules]    Script Date: 4/4/2018 6:40:15 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -244,7 +246,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Venue_Rules_Venues]    Script Date: 4/3/2018 11:42:12 PM ******/
+/****** Object:  Table [dbo].[Venue_Rules_Venues]    Script Date: 4/4/2018 6:40:15 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -254,7 +256,7 @@ CREATE TABLE [dbo].[Venue_Rules_Venues](
 	[fk_Venue_Rule] [smallint] NOT NULL
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Venue_Types]    Script Date: 4/3/2018 11:42:13 PM ******/
+/****** Object:  Table [dbo].[Venue_Types]    Script Date: 4/4/2018 6:40:15 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -268,7 +270,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Venue_Types_Venues]    Script Date: 4/3/2018 11:42:13 PM ******/
+/****** Object:  Table [dbo].[Venue_Types_Venues]    Script Date: 4/4/2018 6:40:15 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -278,7 +280,7 @@ CREATE TABLE [dbo].[Venue_Types_Venues](
 	[fk_Venue_Type] [smallint] NOT NULL
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Venues]    Script Date: 4/3/2018 11:42:13 PM ******/
+/****** Object:  Table [dbo].[Venues]    Script Date: 4/4/2018 6:40:15 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
