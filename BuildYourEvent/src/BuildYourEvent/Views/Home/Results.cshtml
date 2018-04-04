@@ -8,9 +8,9 @@
 
         <div class="col-md-7">
             <div class="container">
-                <form class="form-inline" action="#">
-                    <div class="form-group">
-                        <div class="col-sm-10">
+                <form action="#">
+                    <div class="form-row" style="text-align:center;font-size:1.2em;">
+                        <div class="col-md-3">
                             <span>Venue Styles</span>
                             <select class="form-control custom-select" name="venueStyle">
                                 @foreach (Styles style in Model.VenueStyles)
@@ -19,33 +19,25 @@
 
                                 }
                             </select>
-                        </div>
-                        <div class="col-sm-10">
                             <span>Event Date</span>
                             <input name="date" class="form-control" placeholder="Event Date" type="Date" />
                         </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="col-sm-10">
-                            <label for="amount">Price per hour</label>
-                            <input type="text" name ="price"id="amount" readonly"/>
+                        <div class="col-md-6">
+                            <br/>
+                            <span>Price per hour</span>
+                            <br/>
+                            <input class="form-control" type="text" name="price" id="amount" readonly" />
+                            <div class="form-control"id="slider-range-min"></div>
                         </div>
-                        <div class="col-sm-10">
-                            <div id="slider-range-min"></div>
+                        <div class="col-md-3">
+                            <span>Guests</span>
+                            <input class="form-control input-md" type="number" name="guests" id="guests" />
+                            <br />
+                            <a href="#" type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal2">
+                                More Filters
+                            </a>
                         </div>
-
-                    </div>
-
-                    <div class="form-group">
-                        <div class="col-sm-10">
-                            <label for="guests">Guests</label>
-                            <input type="number" name="guests" id="guests" />
-                        </div>
-                    </div>
-                    <a href="#" type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal2">
-                        More Filters
-                    </a>
+                    </div> 
                 </form>
 
                 
