@@ -3,7 +3,7 @@
 @{
     Layout = "/Views/Shared/_Layout.cshtml";
 }
-<div class="container-fluid"  id="resultPage">
+<div class="container-fluid" id="resultPage">
     <div class="row">
 
         <div class="col-md-7">
@@ -23,11 +23,11 @@
                             <input name="date" class="form-control" placeholder="Event Date" type="Date" />
                         </div>
                         <div class="col-md-6">
-                            <br/>
+                            <br />
                             <span>Price per hour</span>
-                            <br/>
+                            <br />
                             <input class="form-control" type="text" name="price" id="amount" readonly" />
-                            <div class="form-control"id="slider-range-min"></div>
+                            <div class="form-control" id="slider-range-min"></div>
                         </div>
                         <div class="col-md-3">
                             <span>Guests</span>
@@ -37,23 +37,23 @@
                                 More Filters
                             </a>
                         </div>
-                    </div> 
+                    </div>
                 </form>
 
-                
+
                 <br />
                 <div class="container" id="filters"></div>
                 <div class="container-fluid">
                     <table class="table table-striped">
                         @if (Model.Venues != null)
                         {
-                           
-                                <tr>
-                                    <td><h5>Name of Venue</h5></td>
-                                    <td><h5>Price per day</h5></td>
-                                    <td><h5>Guest Capacity</h5></td>
-                                </tr>
-                          
+
+                            <tr>
+                                <td><h5>Name of Venue</h5></td>
+                                <td><h5>Price per day</h5></td>
+                                <td><h5>Guest Capacity</h5></td>
+                            </tr>
+
                                 @foreach (Venues venues in Model.Venues)
                                 {
                                     <tr>
@@ -76,7 +76,7 @@
                 </div>
             </div>
         </div>
-        
+
 
         <div class="col-md-5">
             <div class="float-right" id="googleMap" style="width:100%;height:500px; "></div>
@@ -93,7 +93,7 @@
             <div class="modal-header">
                 <h4 class="modal-title" id="myModalLabel2">More Filters</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                
+
             </div>
 
             <div class="modal-body">
@@ -163,8 +163,8 @@
                     </form>
                 </div>
             </div><!--modal body-->
-          </div><!-- modal-content -->
-     </div><!-- modal-dialog -->
+        </div><!-- modal-content -->
+    </div><!-- modal-dialog -->
 
 </div><!-- modal -->
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCDVghUsejUCZxuCLkGjcwb6usIOJivbnI&callback=initMap"></script>
