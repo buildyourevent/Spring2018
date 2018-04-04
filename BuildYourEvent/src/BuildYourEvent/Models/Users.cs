@@ -18,14 +18,14 @@ namespace BuildYourEvent.Models
         }
         [Required]
         [StringLength(100)]
-        public String firstName
+        public String first_name
         {
             get;
             set;
         }
         [Required]
         [StringLength(100)]
-        public String lastName
+        public String last_name
         {
             get;
             set;
@@ -53,13 +53,5 @@ namespace BuildYourEvent.Models
             get;
             set;
         }
-        [ForeignKey("User_Types")]
-        [Required]
-        public short fk_user_types
-        {
-            get;
-            set;
-        }
-
     }
 }
