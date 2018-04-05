@@ -114,13 +114,6 @@ button:hover {
   opacity:1;
 }
 
-/* Extra styles for the cancel button */
-.cancelbtn {
-  padding: 14px 20px;
-  background-color: #f44336;
-  float: left;
-  width: 50%;
-}
 .signupbtn{
      padding: 14px 20px;
      background-color: #4CAF50;
