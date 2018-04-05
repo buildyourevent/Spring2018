@@ -9,7 +9,7 @@ namespace BuildYourEvent.Models
 {
     public class Photos_Venues
     {
-        [Key, ForeignKey("Venues")]
+       /* [Key, ForeignKey("Venues")]
         [Required]
         public short fk_Venue
         {
@@ -23,6 +23,6 @@ namespace BuildYourEvent.Models
         {
             get;
             set;
-        }
+        }*/
     }
 }

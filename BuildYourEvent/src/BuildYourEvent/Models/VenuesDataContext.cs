@@ -31,7 +31,6 @@ namespace BuildYourEvent.Models
         public DbSet<Event_Types_Venues> Event_Types_Venues { get; set; }
         public DbSet<Features_Venues> Features_Venues { get; set; }
         public DbSet<On_Site_Services_Venues> On_Site_Services_Venues { get; set; }
-        public DbSet<Photos_Venues> Photos_Venues { get; set; }
         public DbSet<Styles_Venues> Styles_Venues { get; set; }
         public DbSet<Venue_Rules_Venues> Venue_Rules_Venues { get; set; }
         public DbSet<Venue_Types_Venues> Venue_Types_Venues { get; set; }
