@@ -72,8 +72,22 @@ namespace BuildYourEvent.Controllers
         }
         public IActionResult RegisterVenue()
         {
+            dynamic model = new ExpandoObject();
+            model.VenueTypes = _context.Venue_Types.ToList();
+            model.VenueStyles = _context.Styles.ToList();
+            model.Amenities = _context.Amenities.ToList();
+            model.EventTypes = _context.Event_Types.ToList();
+            model.Features = _context.Features.ToList();
+            model.OnSiteServices = _context.On_Site_Services.ToList();
+            model.VenueRules = _context.Venue_Rules.ToList();
+            return View(model);
+        }
 
-            return View();
+        [HttpPost]
+        public IActionResult AddVenue()
+        {
+
+            return RedirectToAction("Index");
         }
     }
 }
