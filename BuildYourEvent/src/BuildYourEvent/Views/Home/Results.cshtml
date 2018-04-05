@@ -61,20 +61,19 @@
                                         <td><p>$@venues.price_daily</p></td>
                                         <td><p>@venues.guest_capacity</p></td>
                                     </tr>
-                                    <tr>
+
                                         @foreach (Photos photo in Model.Photos)
                                         {
                                             if (photo.fk_Venue == venues.id)
                                             {
-                                            <img src="@photo.url" height="250" width="350">
-
+                                            <img src="@Url.Content(photo.url)" height="250" width="350">
                                             <p>file: @photo.filename,venue id: @photo.fk_Venue, 
                                             url: @photo.url, id: @photo.id</p>
                                             }
                                         }
 
 
-                                    </tr>
+                                    
                                 }
 
 
