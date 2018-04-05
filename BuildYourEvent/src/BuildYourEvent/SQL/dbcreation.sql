@@ -667,3 +667,12 @@ INSERT INTO [dbo].[Locations]
            ('Ottawa','Ontario','Canada', '1200 St.Laurent', 'K1K 3B8', '45.422229','-75.638769');
 
 /*TBD: Add one Test vendor for dummy data*/
+insert into Users(user_name,password,email,first_name,last_name)values('test','pass','t@t.ca','Bob','Waters');
+
+insert into Vendors(fk_user,company_name)values(1,'company test');
+
+insert into Venues(name,guest_capacity,venue_size_sqf,price_hourly,price_daily,fk_location,fk_vendor)values('Test Venue1',100,100,50,200,1,1);
+
+insert into Venue_Types_Venues(fk_Venue,fk_Venue_Type)values(1,1);
+
+insert into Amenities_Venues(fk_Venue,fk_Amenity)values(1,1);
