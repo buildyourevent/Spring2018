@@ -139,3 +139,19 @@ hr {
     width: 100%;
   }
 }
+
+/*THIS IS FOR THE VENUE REGISTER PAGE*/
+
+#venueTitle{
+
+    font-size:45px;
+}
+
+#venueSubTitle{
+
+    font-size:35px;
+}
+
+#venueFilter{
+    border-bottom:2px solid #9cafb7;
+}
