@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Http;
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
@@ -25,6 +27,12 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav mr-auto"></ul>
             <ul class="nav navbar-nav navbar-right" id="headerFont">
+                @if (Context.Session.GetInt32("userId") != null)
+                {
+                   // <li><a href="#" class="nav-link">uid:@Context.Session.GetInt32("userId") </a></li>
+                   // <li><a href="#" class="nav-link">vid:@Context.Session.GetInt32("vendorId") </a></li>
+
+                }
                 <li><a href="#" class="nav-link"> What we do</a></li>
                 <li><a href="@Url.Action("RegisterVenue", "Home")" class="nav-link">Add your venue</a></li>
                 <li><a href="#" class="nav-link" data-toggle="modal" data-target="#myModal">Login</a></li>
