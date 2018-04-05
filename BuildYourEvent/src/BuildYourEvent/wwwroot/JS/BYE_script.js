@@ -15,6 +15,19 @@ $(function () {
     $("#amount").val("$" + $("#slider-range-min").slider("value"));
 });
 
+
+    //reduce painfully long form size on venue register
+$("#filterSection").hide();
+
+$("#rButton").click(function () {
+    $("#filterSection").fadeIn("slow");
+    $("#registerSection").fadeOut("fast");
+});
+
+$("#registerVenueBack").click(function () {
+    $("#filterSection").fadeOut("fast");
+    $("#registerSection").fadeIn("slow");
+});
 });
 
 //google map function

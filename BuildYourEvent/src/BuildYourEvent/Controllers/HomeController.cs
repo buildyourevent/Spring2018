@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using System.Dynamic;
 using Microsoft.AspNetCore.Mvc;
 using BuildYourEvent.Models;
+using System.IO;
+
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace BuildYourEvent.Controllers
@@ -27,12 +29,19 @@ namespace BuildYourEvent.Controllers
         {
             dynamic model = new ExpandoObject();
             List<Venues> venuesList = new List<Venues>();
+            List<Photos> PhotosList = new List<Photos>();
+
             //model.Venues = (from v in _context.Venues where v.fk_venue_type == venueTypeId select v).ToList();
             var venues = (from v in _context.Venue_Types_Venues where v.fk_Venue_Type == venueTypeId select v.fk_Venue).ToArray();
             foreach(var item in venues)
             {
                 var v = (from c in _context.Venues where c.id == item select c).FirstOrDefault();
                 venuesList.Add(v);
+                var pics = (from p in _context.Photos where p.fk_Venue == item select p).ToList();
+                foreach(var photo in pics)
+                {
+                    PhotosList.Add(photo);
+                }
             }
             model.Venues = venuesList.ToList();
             model.VenueStyles = _context.Styles.ToList();
@@ -41,6 +50,8 @@ namespace BuildYourEvent.Controllers
             model.Features = _context.Features.ToList();
             model.OnSiteServices = _context.On_Site_Services.ToList();
             model.VenueRules = _context.Venue_Rules.ToList();
+            model.Photos = PhotosList.ToList();
+
             return View(model);
         }
         public IActionResult Register()
@@ -63,8 +74,22 @@ namespace BuildYourEvent.Controllers
         }
         public IActionResult RegisterVenue()
         {
+            dynamic model = new ExpandoObject();
+            model.VenueTypes = _context.Venue_Types.ToList();
+            model.VenueStyles = _context.Styles.ToList();
+            model.Amenities = _context.Amenities.ToList();
+            model.EventTypes = _context.Event_Types.ToList();
+            model.Features = _context.Features.ToList();
+            model.OnSiteServices = _context.On_Site_Services.ToList();
+            model.VenueRules = _context.Venue_Rules.ToList();
+            return View(model);
+        }
 
-            return View();
+        [HttpPost]
+        public IActionResult AddVenue()
+        {
+            
+            return RedirectToAction("Index");
         }
     }
 }
