@@ -77,7 +77,7 @@ namespace BuildYourEvent.Controllers
         [HttpPost]
         public IActionResult AddVenue()
         {
-
+            
             return RedirectToAction("Index");
         }
     }
