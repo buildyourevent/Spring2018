@@ -24,9 +24,8 @@ namespace BuildYourEvent.Models
             set;
         }
 
-        [ForeignKey("Venues")]
         [Required]
-        public short fk_venue
+        public string company_name
         {
             get;
             set;

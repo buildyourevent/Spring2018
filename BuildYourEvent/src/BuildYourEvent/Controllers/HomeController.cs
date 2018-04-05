@@ -48,6 +48,19 @@ namespace BuildYourEvent.Controllers
 
             return View();
         }
+
+        public IActionResult RegisterUser(Users user,string companyName)
+        {
+            _context.Users.Add(user);
+            _context.SaveChanges();
+            short id = (from u in _context.Users where u.user_name == user.user_name && u.first_name == user.first_name select u.id).FirstOrDefault();
+            Vendors vendor = new Vendors();
+            vendor.fk_user = id;
+            vendor.company_name = companyName;
+            _context.Vendors.Add(vendor);
+            _context.SaveChanges();
+            return RedirectToAction("Index");
+        }
         public IActionResult RegisterVenue()
         {
 
