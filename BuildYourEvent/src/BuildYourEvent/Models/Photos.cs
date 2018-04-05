@@ -7,23 +7,29 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BuildYourEvent.Models
 {
-    public class Amenities_Venues
+    public class Photos
     {
-        [Key, ForeignKey("Venues")]
         [Required]
-        public short fk_Venue
+        public short id
         {
             get;
             set;
         }
 
-        [ForeignKey("Amenities")]
         [Required]
-        public short fk_Amenity
+        [StringLength(2048)]
+        public String filename
         {
             get;
             set;
         }
 
+        [Required]
+        [StringLength(2048)]
+        public String url
+        {
+            get;
+            set;
+        }
     }
 }

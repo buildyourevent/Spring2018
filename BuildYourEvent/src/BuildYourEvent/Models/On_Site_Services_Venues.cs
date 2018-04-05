@@ -9,7 +9,7 @@ namespace BuildYourEvent.Models
 {
     public class On_Site_Services_Venues
     {
-        [ForeignKey("Venues")]
+        [Key, ForeignKey("Venues")]
         [Required]
         public short fk_Venue
         {
