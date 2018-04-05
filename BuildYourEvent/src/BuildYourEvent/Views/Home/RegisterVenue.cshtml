@@ -4,102 +4,88 @@
     Layout = "/Views/Shared/_Layout.cshtml";
 }
 <br/>
-<div class="container">
-    <h1 id="venueTitle">Register a Venue!</h1>
-</div>
+
 
     <div class="container">
         <form asp-controller="Home" asp-action="AddVenue">
-            <div class="form-row">
-                <div class="form-group col">
-                    <label for="venueName">Venue Name</label>
-                    <input type="email" class="form-control" id="venueName" name="name" placeholder="Venue Name">
+            <div id="registerSection">
+                <div class="container">
+                    <h1 id="venueTitle">Register a Venue!</h1>
                 </div>
+                <div class="form-row">
+                    <div class="form-group col">
+                        <label for="venueName">Venue Name</label>
+                        <input type="email" class="form-control" id="venueName" name="name" placeholder="Venue Name">
+                    </div>
 
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="capacity">Guest Capacity</label>
+                        <input type="number" class="form-control" id="capacity" name="guest_capacity" placeholder="Guest Capacity">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="size">Venue size(sq.feet)</label>
+                        <input type="number" class="form-control" id="size" name="venue_size_sqf" placeholder="Venue Square footage">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="priceDaily">Price Daily</label>
+                        <input type="number" step="0.01" class="form-control" id="priceDaily" name="price_daily" placeholder="Daily rate">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="priceHourly">Price Hourly</label>
+                        <input type="number" step="0.01" class="form-control" id="priceHourly" name="price_hourly" placeholder="Hourly Rate">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="street">Address</label>
+                    <input type="text" class="form-control" id="street" name="street" placeholder="1234 Main St">
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputCity">City</label>
+                        <input type="text" class="form-control" name="city" id="inputCity">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="inputProvince">Province</label>
+                        <select id="inputProvince" class="form-control" name="province">
+                            <option selected>Choose...</option>
+                            <option>Alberta</option>
+                            <option>British Columbia</option>
+                            <option>Manitoba</option>
+                            <option>New Brunswick</option>
+                            <option>Newfoundland and Labrador</option>
+                            <option>Northwest Territories</option>
+                            <option>Nova Scotia</option>
+                            <option>Prince Edward Island</option>
+                            <option>Quebec</option>
+                            <option>Saskatchewan</option>
+                            <option>Yukon</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="inputPostal">Postal Code</label>
+                        <input type="text" class="form-control" id="inputPostal" name="postal_code">
+                    </div>
+                </div>
+                <!-- COMPONENT START -->
+                <div class="form-group">
+                    <h3>Add Venue Photos</h3>
+                    <input type="file" multiple name="files" />
+                </div>
+                <br />
+                <br />
+                <a href="#" id="rButton" class="btn btn-primary btn-md float-right">Continue to filters</a>
             </div>
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label for="capacity">Guest Capacity</label>
-                    <input type="number" class="form-control" id="capacity" name="guest_capacity" placeholder="Guest Capacity">
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="size">Venue size(sq.feet)</label>
-                    <input type="number" class="form-control" id="size" name="venue_size_sqf" placeholder="Venue Square footage">
-                </div>
-            </div>
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label for="priceDaily">Price Daily</label>
-                    <input type="number" step="0.01" class="form-control" id="priceDaily" name="price_daily" placeholder="Daily rate">
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="priceHourly">Price Hourly</label>
-                    <input type="number" step="0.01" class="form-control" id="priceHourly" name="price_hourly" placeholder="Hourly Rate">
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="street">Address</label>
-                <input type="text" class="form-control" id="street" name="street" placeholder="1234 Main St">
-            </div>
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label for="inputCity">City</label>
-                    <input type="text" class="form-control" name="city" id="inputCity">
-                </div>
-                <div class="form-group col-md-4">
-                    <label for="inputProvince">Province</label>
-                    <select id="inputProvince" class="form-control" name="province">
-                        <option selected>Choose...</option>
-                        <option>Alberta</option>
-                        <option>British Columbia</option>
-                        <option>Manitoba</option>
-                        <option>New Brunswick</option>
-                        <option>Newfoundland and Labrador</option>
-                        <option>Northwest Territories</option>
-                        <option>Nova Scotia</option>
-                        <option>Prince Edward Island</option>
-                        <option>Quebec</option>
-                        <option>Saskatchewan</option>
-                        <option>Yukon</option>
-                    </select>
-                </div>
-                <div class="form-group col-md-2">
-                    <label for="inputPostal">Postal Code</label>
-                    <input type="text" class="form-control" id="inputPostal" name="postal_code">
-                </div>
-            </div>
-            <!-- COMPONENT START -->
-            <div class="form-group">
-                <h3>Add Venue Photos</h3>
-                <div class="input-group input-file" name="file">
-                    <span class="input-group-btn">
-                        <button class="btn btn-default btn-choose" type="button">Choose</button>
-                    </span>
-                    <input type="text" class="form-control" placeholder='Choose a file...' />
-                    <span class="input-group-btn">
-                        <button class="btn btn-warning btn-reset" type="button">Reset</button>
-                    </span>
-                </div>
-            </div>
-            <!-- COMPONENT START -->
-            <div class="form-group">
-                <div class="input-group input-file" name="file">
-                    <span class="input-group-btn">
-                        <button class="btn btn-default btn-choose" type="button">Choose</button>
-                    </span>
-                    <input type="text" class="form-control" placeholder='Choose a file...' />
-                    <span class="input-group-btn">
-                        <button class="btn btn-warning btn-reset" type="button">Reset</button>
-                    </span>
-                </div>
-            </div>
-            <br/>
-            <br/>
+
             <!--START OF FILTER SELECTION-->
-            <h2 id="venueSubTitle">Choose Filters!</h2>
-            <h5>Users will search these filters to find you</h5>
-            <br/>
-                <div class="form-group"id="venueFilter">
+            <div id="filterSection">
+                <h2 id="venueSubTitle">Choose Filters!</h2>
+                <h5>Users will search these filters to find you</h5>
+                <br />
+                <div class="form-group" id="venueFilter">
                     <h3>Venue Types</h3>
                     @foreach (Venue_Types t in Model.VenueTypes)
                     {
@@ -112,33 +98,33 @@
                 </div>
 
 
-            <div class="form-group"id="venueFilter">
-                <h3>Venue Styles</h3>
-                @foreach (Styles s in Model.VenueStyles)
-                {
+                <div class="form-group" id="venueFilter">
+                    <h3>Venue Styles</h3>
+                    @foreach (Styles s in Model.VenueStyles)
+                    {
 
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" name="venueStyles" type="checkbox" id="@s.name" value="@s.name" />
-                        <label class="form-check-label" for="@s.name">@s.name</label>
-                    </div>
-                }
-            </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" name="venueStyles" type="checkbox" id="@s.name" value="@s.name" />
+                            <label class="form-check-label" for="@s.name">@s.name</label>
+                        </div>
+                    }
+                </div>
 
-            <div class="form-group"id="venueFilter">
-                <h3>Amenities</h3>
+                <div class="form-group" id="venueFilter">
+                    <h3>Amenities</h3>
                     @foreach (Amenities a in Model.Amenities)
                     {
-                        
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" name ="amenities" type="checkbox" id="@a.name" value="@a.name" />
-                                <label class="form-check-label" for="@a.name">@a.name</label>
-                            </div>
+
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" name="amenities" type="checkbox" id="@a.name" value="@a.name" />
+                            <label class="form-check-label" for="@a.name">@a.name</label>
+                        </div>
 
 
                     }
-            </div>
-            <div class="form-group"id="venueFilter">
-                <h3>Event Type</h3>
+                </div>
+                <div class="form-group" id="venueFilter">
+                    <h3>Event Type</h3>
                     @foreach (Event_Types e in Model.EventTypes)
                     {
                         <div class="form-check form-check-inline">
@@ -147,76 +133,44 @@
                         </div>
 
                     }
+                </div>
+                <div class="form-group" id="venueFilter">
+                    <h3>Features</h3>
+                    @foreach (Features f in Model.Features)
+                    {
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" name="features" type="checkbox" id="@f.name" value="@f.name" />
+                            <label class="form-check-label" for="@f.name">@f.name</label>
+                        </div>
+
+                    }
+                </div>
+                <div class="form-group" id="venueFilter">
+                    <h3>On-Site Services</h3>
+                    @foreach (On_Site_Services o in Model.OnSiteServices)
+                    {
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" name="onSiteServices" type="checkbox" id="@o.name" value="@o.name" />
+                            <label class="form-check-label" for="@o.name">@o.name</label>
+                        </div>
+
+                    }
+                </div>
+                <div class="form-group">
+                    <h3>Venue Rules</h3>
+                    @foreach (Venue_Rules r in Model.VenueRules)
+                    {
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" name="venueRules" type="checkbox" id="@r.name" value="@r.name" />
+                            <label class="form-check-label" for="@r.name">@r.name</label>
+                        </div>
+
+                    }
+                </div>
+                
+                <button style="background-color:#9cafb7; border-color:#9cafb7;" type="submit" class="btn btn-primary btn-lg float-right">Add Venue</button>
+                <a href="#" id="registerVenueBack" class="btn btn-success btn-lg float-right">Back</a>
             </div>
-            <div class="form-group"id="venueFilter">
-                <h3>Features</h3>
-                @foreach (Features f in Model.Features)
-                {
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" name="features" type="checkbox" id="@f.name" value="@f.name" />
-                        <label class="form-check-label" for="@f.name">@f.name</label>
-                    </div>
-
-                }
-            </div>
-            <div class="form-group"id="venueFilter">
-                <h3>On-Site Services</h3>
-                @foreach (On_Site_Services o in Model.OnSiteServices)
-                {
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" name="onSiteServices" type="checkbox" id="@o.name" value="@o.name" />
-                        <label class="form-check-label" for="@o.name">@o.name</label>
-                    </div>
-
-                }
-            </div>
-            <div class="form-group">
-                <h3>Venue Rules</h3>
-                @foreach (Venue_Rules r in Model.VenueRules)
-                {
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" name="venueRules" type="checkbox" id="@r.name" value="@r.name" />
-                        <label class="form-check-label" for="@r.name">@r.name</label>
-                    </div>
-
-                }
-            </div>
-
-            <button style="background-color:#9cafb7; border-color:#9cafb7;" type="submit" class="btn btn-primary btn-lg float-right">Add Venue</button>
-
         </form>
     </div>
 
-
-<script>
-    //script for picture upload
-                function bs_input_file() {
-                    $(".input-file").before(
-                        function () {
-                            if (!$(this).prev().hasClass('input-ghost')) {
-                                var element = $("<input type='file' class='input-ghost' style='visibility:hidden; height:0'>");
-                                element.attr("name", $(this).attr("name"));
-                                element.change(function () {
-                                    element.next(element).find('input').val((element.val()).split('\\').pop());
-                                });
-                                $(this).find("button.btn-choose").click(function () {
-                                    element.click();
-                                });
-                                $(this).find("button.btn-reset").click(function () {
-                                    element.val(null);
-                                    $(this).parents(".input-file").find('input').val('');
-                                });
-                                $(this).find('input').css("cursor", "pointer");
-                                $(this).find('input').mousedown(function () {
-                                    $(this).parents('.input-file').prev().click();
-                                    return false;
-                                });
-                                return element;
-                            }
-                        }
-                    );
-                }
-                $(function () {
-                    bs_input_file();
-                });
-</script>
