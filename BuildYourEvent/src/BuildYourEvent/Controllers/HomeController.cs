@@ -70,8 +70,11 @@ namespace BuildYourEvent.Controllers
             _context.SaveChanges();
             return RedirectToAction("Index");
         }
-        public IActionResult RegisterVenue()
+        public IActionResult RegisterVenue(Venues venue)
         {
+            _context.Venues.Add(venue);
+            _context.SaveChanges();
+            /*
             dynamic model = new ExpandoObject();
             model.VenueTypes = _context.Venue_Types.ToList();
             model.VenueStyles = _context.Styles.ToList();
@@ -80,7 +83,9 @@ namespace BuildYourEvent.Controllers
             model.Features = _context.Features.ToList();
             model.OnSiteServices = _context.On_Site_Services.ToList();
             model.VenueRules = _context.Venue_Rules.ToList();
-            return View(model);
+            return View(model);*/
+            return RedirectToAction("Index");
+
         }
 
         [HttpPost]
