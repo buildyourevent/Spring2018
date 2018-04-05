@@ -27,12 +27,19 @@ namespace BuildYourEvent.Controllers
         {
             dynamic model = new ExpandoObject();
             List<Venues> venuesList = new List<Venues>();
+            List<Photos> PhotosList = new List<Photos>();
+
             //model.Venues = (from v in _context.Venues where v.fk_venue_type == venueTypeId select v).ToList();
             var venues = (from v in _context.Venue_Types_Venues where v.fk_Venue_Type == venueTypeId select v.fk_Venue).ToArray();
             foreach(var item in venues)
             {
                 var v = (from c in _context.Venues where c.id == item select c).FirstOrDefault();
                 venuesList.Add(v);
+                var pics = (from p in _context.Photos where p.fk_Venue == item select p).ToList();
+                foreach(var photo in pics)
+                {
+                    PhotosList.Add(photo);
+                }
             }
             model.Venues = venuesList.ToList();
             model.VenueStyles = _context.Styles.ToList();
@@ -41,6 +48,8 @@ namespace BuildYourEvent.Controllers
             model.Features = _context.Features.ToList();
             model.OnSiteServices = _context.On_Site_Services.ToList();
             model.VenueRules = _context.Venue_Rules.ToList();
+            model.Photos = PhotosList.ToList();
+
             return View(model);
         }
         public IActionResult Register()
