@@ -163,7 +163,7 @@ namespace BuildYourEvent.Controllers
 
             /*Amenities*/
             IList<Amenities_Venues> newAmenities = new List<Amenities_Venues>();
-            var amenitiesIds = Request.Form["venueRules"].ToList();
+            var amenitiesIds = Request.Form["amenities"].ToList();
             foreach (String item in amenitiesIds)
             {
                 newAmenities.Add(new Amenities_Venues()
