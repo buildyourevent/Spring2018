@@ -694,6 +694,7 @@ add FOREIGN Key (fk_venue) References Venues(id);
 
 /*add rows of dummy data to photos*/
 /* set your fk_venue to what you have as an id in venues*/
+
 INSERT INTO [dbo].[Photos]
            ([filename]
            ,[url]
@@ -703,3 +704,38 @@ INSERT INTO [dbo].[Photos]
            ,'~/Images/outside.jpg'
            ,1),('file 2', '~/Images/venue.jpg', 1);
 
+
+/*Modifies all Junction tables to allow surogate keys.
+Changes already made to model and context */
+--VERY IMPORTANT
+--Note: Db admin noted an odd error for Amenities_Venues, let him know if you experience the same
+
+ALTER TABLE Venue_Types_Venues 
+ADD CONSTRAINT PK_Venue_Types_Venues
+PRIMARY KEY (fk_Venue, fk_Venue_type);
+
+
+
+ALTER TABLE Venue_Rules_Venues 
+ADD CONSTRAINT PK_Venue_Rules_Venues
+PRIMARY KEY (fk_Venue, fk_Venue_Rule);
+
+ALTER TABLE Amenities_Venues 
+ADD CONSTRAINT PK_Amenities_Venues
+PRIMARY KEY (fk_Venue, fk_Amenity);
+
+ALTER TABLE Event_Types_Venues 
+ADD CONSTRAINT PK_Event_Types_Venues
+PRIMARY KEY (fk_Venue, fk_Event_type);
+
+ALTER TABLE On_Site_Services_Venues 
+ADD CONSTRAINT PK_On_Site_Services_Venues
+PRIMARY KEY (fk_Venue, fk_On_Site_Service);
+
+ALTER TABLE Styles_Venues 
+ADD CONSTRAINT PK_Styles_Venues
+PRIMARY KEY (fk_Venue, fk_Style);
+
+ALTER TABLE Features_Venues 
+ADD CONSTRAINT PK_Features_Venues
+PRIMARY KEY (fk_Venue, fk_Feature);
