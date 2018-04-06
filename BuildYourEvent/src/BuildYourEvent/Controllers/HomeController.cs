@@ -109,9 +109,43 @@ namespace BuildYourEvent.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddVenue(Venues venue)
+        public IActionResult AddVenue()
         {
+
+            Locations loc = new Locations();
+            loc.city=Request.Form["city"];
+            loc.province = Request.Form["province"];
+            loc.country= "Canada";
+            loc.street = Request.Form["street"];
+            loc.postal_code = Request.Form["postal_code"];
+            loc.latitude="45";
+            loc.longitude="75";
+
+            _context.Locations.Add(loc);
+            _context.SaveChanges();
+            short locId = loc.id;
+
+            Venues venue = new Venues();
+            venue.name = Request.Form["name"];
+            venue.guest_capacity = Convert.ToInt16(Request.Form["guest_capacity"]);
+            venue.venue_size_sqf = Convert.ToDouble(Request.Form["venue_size_sqf"]);
+            venue.price_hourly = Convert.ToDecimal(Request.Form["price_hourly"]);
+            venue.price_daily = Convert.ToDecimal(Request.Form["price_daily"]);
+            venue.fk_location = locId;
+            venue.fk_Vendor = (short)HttpContext.Session.GetInt32("vendorId");
+
             _context.Venues.Add(venue);
+            _context.SaveChanges();
+            short venueId = venue.id;
+
+            IList<Venue_Types_Venues> newVenueTypes = new List<Venue_Types_Venues>();
+            var venueTypesIds = Request.Form["venueTypes"].ToList();
+            foreach (String item in venueTypesIds) {
+                newVenueTypes.Add(new Venue_Types_Venues()
+                { fk_Venue = venueId, fk_Venue_Type = Convert.ToInt16(item) });
+               
+            }
+            _context.Venue_Types_Venues.AddRange(newVenueTypes);
             _context.SaveChanges();
 
             return RedirectToAction("Index");
