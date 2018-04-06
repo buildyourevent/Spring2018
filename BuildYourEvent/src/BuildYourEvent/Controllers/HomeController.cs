@@ -40,11 +40,10 @@ namespace BuildYourEvent.Controllers
             {
                 var v = (from c in _context.Venues where c.id == item select c).FirstOrDefault();
                 venuesList.Add(v);
-                var pics = (from p in _context.Photos where p.fk_Venue == item select p).ToList();
-                foreach(var photo in pics)
-                {
-                    PhotosList.Add(photo);
-                }
+                //grab the first photo for each venue to place in the card
+                var pics = (from p in _context.Photos where p.fk_Venue == item select p).First();
+                    //add this photo to a list to be passed to dynamic model
+                    PhotosList.Add(pics);
             }
             model.Venues = venuesList.ToList();
             model.VenueStyles = _context.Styles.ToList();
