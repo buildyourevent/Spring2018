@@ -58,7 +58,11 @@ namespace BuildYourEvent.Controllers
 
             return View();
         }
-
+        public IActionResult Logout()
+        {
+            HttpContext.Session.Clear();
+            return RedirectToAction("Index");
+        }
         public IActionResult RegisterUser(Users user,string companyName)
         {
             _context.Users.Add(user);
