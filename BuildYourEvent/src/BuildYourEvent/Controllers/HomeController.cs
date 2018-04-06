@@ -6,17 +6,21 @@ using System.Dynamic;
 using Microsoft.AspNetCore.Mvc;
 using BuildYourEvent.Models;
 using Microsoft.AspNetCore.Http;
+using System.IO;
+using Microsoft.AspNetCore.Hosting;
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace BuildYourEvent.Controllers
 {
     public class HomeController : Controller
     {
-        private VenuesDataContext _context; 
+        private VenuesDataContext _context;
+        private IHostingEnvironment _hostingEnvironment;
 
-        public HomeController(VenuesDataContext context)
+        public HomeController(VenuesDataContext context, IHostingEnvironment environment)
         {
             _context = context;
+            _hostingEnvironment = environment;
         }
         // GET: /<controller>/
         public IActionResult Index()
@@ -109,7 +113,7 @@ namespace BuildYourEvent.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddVenue()
+        public async Task<IActionResult> AddVenue(IList<IFormFile> files)
         {
 
             Locations loc = new Locations();
@@ -219,6 +223,26 @@ namespace BuildYourEvent.Controllers
             _context.Features_Venues.AddRange(newFeatures);
             //do i need to save changes from here on out? since these don't rely on each other?
             _context.SaveChanges();
+
+            //testing stuff
+            var uploads = Path.Combine(_hostingEnvironment.WebRootPath, "Images");
+            foreach (var file in files)
+            {
+                if (file.Length > 0)
+                {
+                    Photos photo = new Models.Photos();
+                    photo.filename = file.FileName;
+                    var filePath = Path.Combine(uploads, file.FileName);
+                    photo.url = filePath;
+                    photo.fk_Venue = (short)HttpContext.Session.GetInt32("vendorId");
+                    _context.Photos.Add(photo);
+                    _context.SaveChanges();
+                    using (var fileStream = new FileStream(filePath, FileMode.Create))
+                    {
+                        await file.CopyToAsync(fileStream);
+                    }
+                }
+            }
 
 
             return RedirectToAction("Index");
