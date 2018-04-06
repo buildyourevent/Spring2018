@@ -40,11 +40,10 @@ namespace BuildYourEvent.Controllers
             {
                 var v = (from c in _context.Venues where c.id == item select c).FirstOrDefault();
                 venuesList.Add(v);
-                var pics = (from p in _context.Photos where p.fk_Venue == item select p).ToList();
-                foreach(var photo in pics)
-                {
-                    PhotosList.Add(photo);
-                }
+                //grab the first photo for each venue to place in the card
+                var pics = (from p in _context.Photos where p.fk_Venue == item select p).First();
+                    //add this photo to a list to be passed to dynamic model
+                    PhotosList.Add(pics);
             }
             model.Venues = venuesList.ToList();
             model.VenueStyles = _context.Styles.ToList();
@@ -86,13 +85,14 @@ namespace BuildYourEvent.Controllers
             Users currentUser = (from u in _context.Users where u.user_name == username && u.password == password select u).FirstOrDefault();
             if (currentUser != null) {
                 HttpContext.Session.SetInt32("userId", currentUser.id);
-            }
-            Vendors currentVendor = (from u in _context.Vendors where u.fk_user == currentUser.id select u).FirstOrDefault();
-            if (currentVendor != null)
-            {
-                HttpContext.Session.SetInt32("vendorId", currentVendor.id);
+                Vendors currentVendor = (from u in _context.Vendors where u.fk_user == currentUser.id select u).FirstOrDefault();
+                if (currentVendor != null)
+                {
+                    HttpContext.Session.SetInt32("vendorId", currentVendor.id);
 
+                }
             }
+           
             
             return RedirectToAction("Index");
         }
@@ -233,7 +233,9 @@ namespace BuildYourEvent.Controllers
                     Photos photo = new Models.Photos();
                     photo.filename = file.FileName;
                     var filePath = Path.Combine(uploads, file.FileName);
-                    photo.url = filePath;
+                    /*This next line has to change when we decide how to store images in a filesystem*/
+                    var dbFilePath = "~/Images/" + file.FileName;
+                    photo.url = dbFilePath;
                     photo.fk_Venue = venueId;
                     _context.Photos.Add(photo);
                     _context.SaveChanges();
