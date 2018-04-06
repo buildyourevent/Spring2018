@@ -14,6 +14,35 @@ namespace BuildYourEvent.Models
         {
 
         }
+        /*
+         Must use fluent api to set a surogate key for our junction (many to many)
+         tables.
+             */
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Venue_Types_Venues>()
+                .HasKey(c => new { c.fk_Venue, c.fk_Venue_Type });
+
+            modelBuilder.Entity<Venue_Rules_Venues>()
+                .HasKey(c => new { c.fk_Venue, c.fk_Venue_Rule });
+
+            modelBuilder.Entity<Amenities_Venues>()
+              .HasKey(c => new { c.fk_Venue, c.fk_Amenity });
+
+            modelBuilder.Entity<Event_Types_Venues>()
+              .HasKey(c => new { c.fk_Venue, c.fk_Event_Type });
+
+            modelBuilder.Entity<On_Site_Services_Venues>()
+              .HasKey(c => new { c.fk_Venue, c.fk_On_Site_Service });
+
+            modelBuilder.Entity<Styles_Venues>()
+              .HasKey(c => new { c.fk_Venue, c.fk_Style });
+
+            modelBuilder.Entity<Features_Venues>()
+             .HasKey(c => new { c.fk_Venue, c.fk_Feature });
+        }
+
+
         public DbSet<Bookings> Bookings { get; set; }
         public DbSet<Amenities> Amenities { get; set; }
         public DbSet<Event_Types> Event_Types { get; set; }

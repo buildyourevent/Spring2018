@@ -44,57 +44,56 @@
                 <br />
                 <div class="container" id="filters"></div>
                 <div class="container-fluid">
-                    <table class="table table-striped">
-                        @if (Model.Venues != null)
-                        {
+                    <div class="card-deck">
+                        <div class="row">
 
-                            <tr>
-                                <td><h5>Name of Venue</h5></td>
-                                <td><h5>Price per day</h5></td>
-                                <td><h5>Guest Capacity</h5></td>
-                            </tr>
 
+                            @if (Model.Venues != null)
+                            {
                                 @foreach (Venues venues in Model.Venues)
                                 {
-                                    <tr>
-                                        <td><p><i>@venues.name</i></p></td>
-                                        <td><p>$@venues.price_daily</p></td>
-                                        <td><p>@venues.guest_capacity</p></td>
-                                    </tr>
-                                    <tr>
-                                        @foreach (Photos photo in Model.Photos)
-                                        {
-                                            if (photo.fk_Venue == venues.id)
-                                            {
-                                            <img src="@Url.Content(photo.url)" height="250" width="350">
 
-                                            <p>file: @photo.filename,venue id: @photo.fk_Venue, 
-                                            url: @photo.url, id: @photo.id</p>
-                                            }
+                                    @foreach (Photos photo in Model.Photos)
+                                    {
+                                        if (photo.fk_Venue == venues.id)
+                                        {
+                                            <div class="col-md-4">
+                                                <div class="card" style="width: 22rem; color:black;">
+                                                    <img src="@Url.Content(photo.url)" class="img-thumbnail" style="width:22rem; height: 15rem;">
+                                                    <div class="card-body">
+                                                        <h5 class="card-title">@venues.name</h5>
+                                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                                        <ul class="list-group list-group-flush">
+                                                            <li class="list-group-item">Price Daily: @venues.price_daily</li>
+                                                            <li class="list-group-item">Guest Capacity: @venues.guest_capacity</li>
+                                                        </ul>
+                                                        <a href="#" class="btn btn-primary">View</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            break;
                                         }
 
 
-                                    </tr>
-                        
+                                    }
                                 }
+                            }
+                            else
+                            {
+                                <br />
+                                <br />
+                                <p>There are no venues currently for this venue type.</p>
+                            }
+                        </div>
+                    </div>
 
-
-
-                        }
-                        else
-                        {
-                            <br />
-                            <br />
-                            <p>There are no venues currently for this venue type.</p>
-                        }
-                    </table>
                 </div>
             </div>
         </div>
 
 
         <div class="col-md-5">
-            <div class="float-right" id="googleMap" style="width:100%;height:500px; "></div>
+            <div class="float-right" id="googleMap" style="width:100%;height:600px; position:fixed;"></div>
         </div>
 
     </div>
