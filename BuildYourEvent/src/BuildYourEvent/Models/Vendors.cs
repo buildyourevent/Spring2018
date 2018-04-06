@@ -24,8 +24,8 @@ namespace BuildYourEvent.Models
             set;
         }
 
-        [StringLength(50)]
-        public short company_name
+        [Required]
+        public string company_name
         {
             get;
             set;

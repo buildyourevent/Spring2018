@@ -31,5 +31,12 @@ namespace BuildYourEvent.Models
             get;
             set;
         }
+        [ForeignKey("Venues")]
+        [Required]
+        public short fk_Venue
+        {
+            get;
+            set;
+        }
     }
 }

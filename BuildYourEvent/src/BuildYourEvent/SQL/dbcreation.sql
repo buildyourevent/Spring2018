@@ -667,3 +667,77 @@ INSERT INTO [dbo].[Locations]
            ('Ottawa','Ontario','Canada', '1200 St.Laurent', 'K1K 3B8', '45.422229','-75.638769');
 
 /*TBD: Add one Test vendor for dummy data*/
+insert into Users(user_name,password,email,first_name,last_name)values('test','pass','t@t.ca','Bob','Waters');
+
+insert into Vendors(fk_user,company_name)values(1,'company test');
+
+insert into Venues(name,guest_capacity,venue_size_sqf,price_hourly,price_daily,fk_location,fk_vendor)values('Test Venue1',100,100,50,200,1,1);
+insert into Venues(name,guest_capacity,venue_size_sqf,price_hourly,price_daily,fk_location,fk_vendor)values('Test Venue2',200,200,500,1000,1,1);
+insert into Venues(name,guest_capacity,venue_size_sqf,price_hourly,price_daily,fk_location,fk_vendor)values('Test Venue3',200,200,500,1000,1,1);
+
+insert into Venue_Types_Venues(fk_Venue,fk_Venue_Type)values(1,1);
+
+insert into Amenities_Venues(fk_Venue,fk_Amenity)values(1,1);
+
+
+
+-- This next section handles modifying the photos tables and adding
+-- in two image urls. 
+/* Delete photos many to many table and create fk to venues*/
+truncate table Photos_Venues;
+drop  table Photos_Venues
+
+Alter table Photos 
+add fk_venue smallint Not Null;
+
+Alter table Photos 
+add FOREIGN Key (fk_venue) References Venues(id);
+
+
+/*add rows of dummy data to photos*/
+/* set your fk_venue to what you have as an id in venues*/
+
+INSERT INTO [dbo].[Photos]
+           ([filename]
+           ,[url]
+           ,[fk_venue])
+     VALUES
+           ('file 1'
+           ,'~/Images/outside.jpg'
+           ,1),('file 2', '~/Images/venue.jpg', 1);
+
+
+/*Modifies all Junction tables to allow surogate keys.
+Changes already made to model and context */
+--VERY IMPORTANT
+--Note: Db admin noted an odd error for Amenities_Venues, let him know if you experience the same
+
+ALTER TABLE Venue_Types_Venues 
+ADD CONSTRAINT PK_Venue_Types_Venues
+PRIMARY KEY (fk_Venue, fk_Venue_type);
+
+
+
+ALTER TABLE Venue_Rules_Venues 
+ADD CONSTRAINT PK_Venue_Rules_Venues
+PRIMARY KEY (fk_Venue, fk_Venue_Rule);
+
+ALTER TABLE Amenities_Venues 
+ADD CONSTRAINT PK_Amenities_Venues
+PRIMARY KEY (fk_Venue, fk_Amenity);
+
+ALTER TABLE Event_Types_Venues 
+ADD CONSTRAINT PK_Event_Types_Venues
+PRIMARY KEY (fk_Venue, fk_Event_type);
+
+ALTER TABLE On_Site_Services_Venues 
+ADD CONSTRAINT PK_On_Site_Services_Venues
+PRIMARY KEY (fk_Venue, fk_On_Site_Service);
+
+ALTER TABLE Styles_Venues 
+ADD CONSTRAINT PK_Styles_Venues
+PRIMARY KEY (fk_Venue, fk_Style);
+
+ALTER TABLE Features_Venues 
+ADD CONSTRAINT PK_Features_Venues
+PRIMARY KEY (fk_Venue, fk_Feature);

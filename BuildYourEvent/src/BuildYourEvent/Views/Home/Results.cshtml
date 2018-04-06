@@ -3,14 +3,14 @@
 @{
     Layout = "/Views/Shared/_Layout.cshtml";
 }
-<div class="container-fluid"  id="resultPage">
+<div class="container-fluid" id="resultPage">
     <div class="row">
 
         <div class="col-md-7">
             <div class="container">
-                <form class="form-inline" action="#">
-                    <div class="form-group">
-                        <div class="col-sm-10">
+                <form action="#">
+                    <div class="form-row" style="text-align:center;font-size:1.2em;">
+                        <div class="col-md-3">
                             <span>Venue Styles</span>
                             <select class="form-control custom-select" name="venueStyle">
                                 @foreach (Styles style in Model.VenueStyles)
@@ -19,75 +19,81 @@
 
                                 }
                             </select>
-                        </div>
-                        <div class="col-sm-10">
                             <span>Event Date</span>
                             <input name="date" class="form-control" placeholder="Event Date" type="Date" />
                         </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="col-sm-10">
-                            <label for="amount">Price per hour</label>
-                            <input type="text" name ="price"id="amount" readonly"/>
+                        <div class="col-md-6">
+                            <br />
+                            <span>Price per hour</span>
+                            <br />
+                            <input class="form-control" type="text" name="price" id="amount" readonly" />
+                            <div class="form-control" id="slider-range-min"></div>
                         </div>
-                        <div class="col-sm-10">
-                            <div id="slider-range-min"></div>
-                        </div>
-
-                    </div>
-
-                    <div class="form-group">
-                        <div class="col-sm-10">
-                            <label for="guests">Guests</label>
-                            <input type="number" name="guests" id="guests" />
+                        <div class="col-md-3">
+                            <span>Guests</span>
+                            <input class="form-control input-md" type="number" name="guests" id="guests" />
+                            <br />
+                            <a href="#" type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal2">
+                                More Filters
+                            </a>
                         </div>
                     </div>
-                    <a href="#" type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal2">
-                        More Filters
-                    </a>
                 </form>
 
-                
+
                 <br />
                 <div class="container" id="filters"></div>
                 <div class="container-fluid">
-                    <table class="table table-striped">
-                        @if (Model.Venues != null)
-                        {
-                           
-                                <tr>
-                                    <td><h5>Name of Venue</h5></td>
-                                    <td><h5>Price per day</h5></td>
-                                    <td><h5>Guest Capacity</h5></td>
-                                </tr>
-                          
+                    <div class="card-deck">
+                        <div class="row">
+
+
+                            @if (Model.Venues != null)
+                            {
                                 @foreach (Venues venues in Model.Venues)
                                 {
-                                    <tr>
-                                        <td><p><i>@venues.name</i></p></td>
-                                        <td><p>$@venues.price_daily</p></td>
-                                        <td><p>@venues.guest_capacity</p></td>
-                                    </tr>
+
+                                    @foreach (Photos photo in Model.Photos)
+                                    {
+                                        if (photo.fk_Venue == venues.id)
+                                        {
+                                            <div class="col-md-4">
+                                                <div class="card" style="width: 22rem; color:black;">
+                                                    <img src="@Url.Content(photo.url)" class="img-thumbnail" style="width:22rem; height: 15rem;">
+                                                    <div class="card-body">
+                                                        <h5 class="card-title">@venues.name</h5>
+                                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                                        <ul class="list-group list-group-flush">
+                                                            <li class="list-group-item">Price Daily: @venues.price_daily</li>
+                                                            <li class="list-group-item">Guest Capacity: @venues.guest_capacity</li>
+                                                        </ul>
+                                                        <a href="#" class="btn btn-primary">View</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            break;
+                                        }
+
+
+                                    }
                                 }
+                            }
+                            else
+                            {
+                                <br />
+                                <br />
+                                <p>There are no venues currently for this venue type.</p>
+                            }
+                        </div>
+                    </div>
 
-
-
-                        }
-                        else
-                        {
-                            <br />
-                            <br />
-                            <p>There are no venues currently for this venue type.</p>
-                        }
-                    </table>
                 </div>
             </div>
         </div>
-        
+
 
         <div class="col-md-5">
-            <div class="float-right" id="googleMap" style="width:100%;height:500px; "></div>
+            <div class="float-right" id="googleMap" style="width:100%;height:600px; position:fixed;"></div>
         </div>
 
     </div>
@@ -101,7 +107,7 @@
             <div class="modal-header">
                 <h4 class="modal-title" id="myModalLabel2">More Filters</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                
+
             </div>
 
             <div class="modal-body">
@@ -171,8 +177,8 @@
                     </form>
                 </div>
             </div><!--modal body-->
-          </div><!-- modal-content -->
-     </div><!-- modal-dialog -->
+        </div><!-- modal-content -->
+    </div><!-- modal-dialog -->
 
 </div><!-- modal -->
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCDVghUsejUCZxuCLkGjcwb6usIOJivbnI&callback=initMap"></script>
