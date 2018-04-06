@@ -5,8 +5,7 @@ using System.Threading.Tasks;
 using System.Dynamic;
 using Microsoft.AspNetCore.Mvc;
 using BuildYourEvent.Models;
-using System.IO;
-
+using Microsoft.AspNetCore.Http;
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace BuildYourEvent.Controllers
@@ -72,8 +71,27 @@ namespace BuildYourEvent.Controllers
             _context.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        public IActionResult Login(String username, String password)
+        {
+           
+            Users currentUser = (from u in _context.Users where u.user_name == username && u.password == password select u).FirstOrDefault();
+            if (currentUser != null) {
+                HttpContext.Session.SetInt32("userId", currentUser.id);
+            }
+            Vendors currentVendor = (from u in _context.Vendors where u.fk_user == currentUser.id select u).FirstOrDefault();
+            if (currentVendor != null)
+            {
+                HttpContext.Session.SetInt32("vendorId", currentVendor.id);
+
+            }
+            
+            return RedirectToAction("Index");
+        }
         public IActionResult RegisterVenue()
         {
+          
+            
             dynamic model = new ExpandoObject();
             model.VenueTypes = _context.Venue_Types.ToList();
             model.VenueStyles = _context.Styles.ToList();
@@ -83,12 +101,15 @@ namespace BuildYourEvent.Controllers
             model.OnSiteServices = _context.On_Site_Services.ToList();
             model.VenueRules = _context.Venue_Rules.ToList();
             return View(model);
+
         }
 
         [HttpPost]
-        public IActionResult AddVenue()
+        public IActionResult AddVenue(Venues venue)
         {
-            
+            _context.Venues.Add(venue);
+            _context.SaveChanges();
+
             return RedirectToAction("Index");
         }
     }
