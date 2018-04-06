@@ -234,7 +234,7 @@ namespace BuildYourEvent.Controllers
                     photo.filename = file.FileName;
                     var filePath = Path.Combine(uploads, file.FileName);
                     photo.url = filePath;
-                    photo.fk_Venue = (short)HttpContext.Session.GetInt32("vendorId");
+                    photo.fk_Venue = venueId;
                     _context.Photos.Add(photo);
                     _context.SaveChanges();
                     using (var fileStream = new FileStream(filePath, FileMode.Create))
