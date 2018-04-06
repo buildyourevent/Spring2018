@@ -50,7 +50,6 @@ namespace BuildYourEvent.Models
         public DbSet<Locations> Locations { get; set; }
         public DbSet<On_Site_Services> On_Site_Services { get; set; }
         public DbSet<Styles> Styles { get; set; }
-        public DbSet<User_Types> User_Types { get; set; }
         public DbSet<Users> Users { get; set; }
         public DbSet<Vendors> Vendors { get; set; }
         public DbSet<Venue_Rules> Venue_Rules { get; set; }
