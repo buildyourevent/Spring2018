@@ -672,6 +672,8 @@ insert into Users(user_name,password,email,first_name,last_name)values('test','p
 insert into Vendors(fk_user,company_name)values(1,'company test');
 
 insert into Venues(name,guest_capacity,venue_size_sqf,price_hourly,price_daily,fk_location,fk_vendor)values('Test Venue1',100,100,50,200,1,1);
+insert into Venues(name,guest_capacity,venue_size_sqf,price_hourly,price_daily,fk_location,fk_vendor)values('Test Venue2',200,200,500,1000,1,1);
+insert into Venues(name,guest_capacity,venue_size_sqf,price_hourly,price_daily,fk_location,fk_vendor)values('Test Venue3',200,200,500,1000,1,1);
 
 insert into Venue_Types_Venues(fk_Venue,fk_Venue_Type)values(1,1);
 
