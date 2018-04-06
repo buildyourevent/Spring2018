@@ -13,7 +13,7 @@
             <div class="form-row">
                 <div class="form-group col">
                     <label for="venueName">Venue Name</label>
-                    <input type="email" class="form-control" id="venueName" name="name" placeholder="Venue Name">
+                    <input type="text" class="form-control" id="venueName" name="name" placeholder="Venue Name">
                 </div>
 
             </div>
@@ -75,7 +75,7 @@
                 {
 
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" name="venueTypes" type="checkbox" id="@t.name" value="@t.name" />
+                        <input class="form-check-input" name="venueTypes" type="checkbox" id="@t.name" value="@t.id" />
                         <label class="form-check-label" for="@t.name">@t.name</label>
                     </div>
                 }
@@ -87,7 +87,7 @@
                 {
 
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" name="venueStyles" type="checkbox" id="@s.name" value="@s.name" />
+                        <input class="form-check-input" name="venueStyles" type="checkbox" id="@s.name" value="@s.id" />
                         <label class="form-check-label" for="@s.name">@s.name</label>
                     </div>
                 }
@@ -99,7 +99,7 @@
                     {
                         
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" name ="amenities" type="checkbox" id="@a.name" value="@a.name" />
+                                <input class="form-check-input" name ="amenities" type="checkbox" id="@a.name" value="@a.id" />
                                 <label class="form-check-label" for="@a.name">@a.name</label>
                             </div>
 
@@ -111,7 +111,7 @@
                     @foreach (Event_Types e in Model.EventTypes)
                     {
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" name="event_types" type="checkbox" id="@e.name" value="@e.name" />
+                            <input class="form-check-input" name="event_types" type="checkbox" id="@e.name" value="@e.id" />
                             <label class="form-check-label" for="@e.name">@e.name</label>
                         </div>
 
@@ -122,7 +122,7 @@
                 @foreach (Features f in Model.Features)
                 {
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" name="features" type="checkbox" id="@f.name" value="@f.name" />
+                        <input class="form-check-input" name="features" type="checkbox" id="@f.name" value="@f.id" />
                         <label class="form-check-label" for="@f.name">@f.name</label>
                     </div>
 
@@ -133,7 +133,7 @@
                 @foreach (On_Site_Services o in Model.OnSiteServices)
                 {
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" name="onSiteServices" type="checkbox" id="@o.name" value="@o.name" />
+                        <input class="form-check-input" name="onSiteServices" type="checkbox" id="@o.name" value="@o.id" />
                         <label class="form-check-label" for="@o.name">@o.name</label>
                     </div>
 
@@ -144,7 +144,7 @@
                 @foreach (Venue_Rules r in Model.VenueRules)
                 {
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" name="venueRules" type="checkbox" id="@r.name" value="@r.name" />
+                        <input class="form-check-input" name="venueRules" type="checkbox" id="@r.name" value="@r.id" />
                         <label class="form-check-label" for="@r.name">@r.name</label>
                     </div>
 
