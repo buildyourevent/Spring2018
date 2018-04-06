@@ -676,3 +676,23 @@ insert into Venues(name,guest_capacity,venue_size_sqf,price_hourly,price_daily,f
 insert into Venue_Types_Venues(fk_Venue,fk_Venue_Type)values(1,1);
 
 insert into Amenities_Venues(fk_Venue,fk_Amenity)values(1,1);
+
+/* FIX PICTURE TABLE*/
+
+truncate table Photos_Venues;
+drop  table Photos_Venues
+
+Alter table Photos 
+add fk_venue smallint Not Null;
+
+Alter table Photos 
+add FOREIGN Key (fk_venue) References Venues(id);
+
+INSERT INTO [dbo].[Photos]
+           ([filename]
+           ,[url]
+           ,[fk_venue])
+     VALUES
+           ('file 1'
+           ,'~/Images/outside.jpg'
+           ,1),('file 2', '~/Images/venue.jpg', 1);
