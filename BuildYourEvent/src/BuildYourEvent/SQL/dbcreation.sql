@@ -676,3 +676,30 @@ insert into Venues(name,guest_capacity,venue_size_sqf,price_hourly,price_daily,f
 insert into Venue_Types_Venues(fk_Venue,fk_Venue_Type)values(1,1);
 
 insert into Amenities_Venues(fk_Venue,fk_Amenity)values(1,1);
+
+
+
+-- This next section handles modifying the photos tables and adding
+-- in two image urls. 
+/* Delete photos many to many table and create fk to venues*/
+truncate table Photos_Venues;
+drop  table Photos_Venues
+
+Alter table Photos 
+add fk_venue smallint Not Null;
+
+Alter table Photos 
+add FOREIGN Key (fk_venue) References Venues(id);
+
+
+/*add rows of dummy data to photos*/
+/* set your fk_venue to what you have as an id in venues*/
+INSERT INTO [dbo].[Photos]
+           ([filename]
+           ,[url]
+           ,[fk_venue])
+     VALUES
+           ('file 1'
+           ,'~/Images/outside.jpg'
+           ,1),('file 2', '~/Images/venue.jpg', 1);
+
