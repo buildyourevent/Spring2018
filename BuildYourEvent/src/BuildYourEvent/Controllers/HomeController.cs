@@ -58,7 +58,6 @@ namespace BuildYourEvent.Controllers
         }
         public IActionResult Register()
         {
-
             return View();
         }
         public IActionResult Logout()
