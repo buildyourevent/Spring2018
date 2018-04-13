@@ -45,7 +45,7 @@
                 <div class="container" id="filters"></div>
                 <div class="container-fluid">
                     <div class="card-deck">
-                        <div class="row">
+                        <div class="row" >
 
 
                             @if (Model.Venues != null)
@@ -57,9 +57,9 @@
                                     {
                                         if (photo.fk_Venue == venues.id)
                                         {
-                                            <div class="col-md-4">
-                                                <div class="card" style="width: 22rem; color:black;">
-                                                    <img src="@Url.Content(photo.url)" class="img-thumbnail" style="width:22rem; height: 15rem;">
+                                            <div class="col-md-6"style="padding-bottom:10px;">
+                                                <div class="card" style="width: 22rem;color:black;">
+                                                    <img src="@Url.Content(photo.url)" class="img-thumbnail" style="width:22rem;height: 15rem;">
                                                     <div class="card-body">
                                                         <h5 class="card-title">@venues.name</h5>
                                                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
