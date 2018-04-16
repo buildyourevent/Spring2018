@@ -27,7 +27,7 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav mr-auto"></ul>
             <ul class="nav navbar-nav navbar-right" id="calibriFont">
-                <li><a href="#" class="nav-link"> What we do</a></li>
+                <li><a href="@Url.Action("ComingSoon","Home")" class="nav-link"> What we do</a></li>
                 @if (Context.Session.GetInt32("vendorId") != null)
                 {
                     //<li><a href="#" class="nav-link">uid:@Context.Session.GetInt32("userId") </a></li>
@@ -92,30 +92,30 @@
             <div class="col-md-3">
                 <p>Build Your Event</p>
                 <ul class="navbar-nav mr-auto">
-                    <li><a class="nav-link" href="#">About us</a></li>
-                    <li><a class="nav-link" href="#">Careers</a></li>
-                    <li><a class="nav-link" href="#">Contact</a></li>
+                    <li><a class="nav-link" href="@Url.Action("ComingSoon","Home")">About us</a></li>
+                    <li><a class="nav-link" href="@Url.Action("ComingSoon","Home")">Careers</a></li>
+                    <li><a class="nav-link" href="@Url.Action("ComingSoon","Home")">Contact</a></li>
                 </ul>
             </div>
             <div class="col-md-3">
                 <p>List your venue</p>
                 <ul class="navbar-nav mr-auto">
-                    <li><a class="nav-link" href="#">How it works</a></li>
-                    <li><a class="nav-link" href="#">Sign up free</a></li>
+                    <li><a class="nav-link" href="@Url.Action("ComingSoon","Home")">How it works</a></li>
+                    <li><a class="nav-link" href="@Url.Action("ComingSoon","Home")">Sign up free</a></li>
                 </ul>
             </div>
             <div class="col-md-3">
                 <p>Support</p>
                 <ul class="navbar-nav mr-auto">
-                    <li><a class="nav-link" href="#">Cancellations</a></li>
-                    <li><a class="nav-link" href="#">Liability & insurance</a></li>
+                    <li><a class="nav-link" href="@Url.Action("ComingSoon","Home")">Cancellations</a></li>
+                    <li><a class="nav-link" href="@Url.Action("ComingSoon","Home")">Liability & insurance</a></li>
                 </ul>
             </div>
             <div class="col-md-3">
                 <p>Legal</p>
                 <ul class="navbar-nav mr-auto">
-                    <li><a class="nav-link" href="#">Terms</a></li>
-                    <li><a class="nav-link" href="#">Privacy</a></li>
+                    <li><a class="nav-link" href="@Url.Action("ComingSoon","Home")">Terms</a></li>
+                    <li><a class="nav-link" href="@Url.Action("ComingSoon","Home")">Privacy</a></li>
                 </ul>
             </div>
         </div>
