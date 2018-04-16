@@ -253,5 +253,15 @@ namespace BuildYourEvent.Controllers
 
             return RedirectToAction("Index");
         }
+
+        public IActionResult ViewVenue(short id)
+        {
+            dynamic model = new ExpandoObject();
+            var venue = (from v in _context.Venues where v.id == id select v).FirstOrDefault();
+            var venuePics = (from p in _context.Photos where p.fk_Venue == id select p).ToList();
+            model.venue = venue;
+            model.venuePics = venuePics;
+            return View(model);
+        }
     }
 }
