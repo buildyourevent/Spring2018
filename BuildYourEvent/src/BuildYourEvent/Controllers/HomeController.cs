@@ -27,7 +27,10 @@ namespace BuildYourEvent.Controllers
         {
             return View(_context.Venue_Types.ToList());
         }
-
+        public IActionResult ComingSoon()
+        {
+            return View();
+        }
         public IActionResult Results(short venueTypeId)
         {
             dynamic model = new ExpandoObject();
@@ -58,7 +61,6 @@ namespace BuildYourEvent.Controllers
         }
         public IActionResult Register()
         {
-
             return View();
         }
         public IActionResult Logout()
@@ -84,6 +86,7 @@ namespace BuildYourEvent.Controllers
            
             Users currentUser = (from u in _context.Users where u.user_name == username && u.password == password select u).FirstOrDefault();
             if (currentUser != null) {
+                HttpContext.Session.SetString("firstName",currentUser.first_name);
                 HttpContext.Session.SetInt32("userId", currentUser.id);
                 Vendors currentVendor = (from u in _context.Vendors where u.fk_user == currentUser.id select u).FirstOrDefault();
                 if (currentVendor != null)
