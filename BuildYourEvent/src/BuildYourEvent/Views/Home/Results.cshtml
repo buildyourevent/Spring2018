@@ -12,7 +12,7 @@
                     <div class="form-row" style="text-align:center;font-size:1.2em;">
                         <div class="col-md-3">
                             <span>Venue Styles</span>
-                            <select class="form-control custom-select" name="venueStyle">
+                            <select class="form-control custom-select" name="venueStyle" id="vStyles">
                                 @foreach (Styles style in Model.VenueStyles)
                                 {
                                     <option>@style.name</option>
@@ -20,7 +20,7 @@
                                 }
                             </select>
                             <span>Event Date</span>
-                            <input name="date" class="form-control" placeholder="Event Date" type="Date" />
+                            <input name="date" class="form-control" id="date" placeholder="Event Date" type="Date" />
                         </div>
                         <div class="col-md-6">
                             <br />
@@ -67,7 +67,7 @@
                                                             <li class="list-group-item">Price Daily: @venues.price_daily</li>
                                                             <li class="list-group-item">Guest Capacity: @venues.guest_capacity</li>
                                                         </ul>
-                                                        <a href="#" class="btn btn-primary">View</a>
+                                                        <a asp-controller="home" asp-action="ViewVenue" asp-route-id="@venues.id" class="btn btn-primary">View</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -112,7 +112,11 @@
 
             <div class="modal-body">
                 <div class="container">
-                    <form action="#">
+                    <form>
+                        <input type="hidden" id="price" name="price"/>
+                        <input type="hidden" id="numGuests" name="numGuests"/>
+                        <input type="hidden" id="style" name="style"/>
+                        <input type="hidden" id="event_date" name="event_date"/>
                         <div class="form-group">
                             <div class="col-sm-12">
                                 <h4>Amenities</h4>
@@ -179,7 +183,7 @@
                                 }
                             </div>
                         </div>
-                        <button class="btn btn-primary">Select new filters</button>
+                        <button id ="submitFilters" class="btn btn-primary">Select new filters</button>
                     </form>
 
                 </div>
@@ -189,3 +193,15 @@
 
 </div><!-- modal -->
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCDVghUsejUCZxuCLkGjcwb6usIOJivbnI&callback=initMap"></script>
+<script type="text/javascript">
+    $("#submitFilters").click(function () {    
+
+        $('#price').val($('#amount').val());
+        $('#numGuests').val($('#guests').val());
+        $('#style').val($('#vStyles').val());
+        $('#event_date').val($('#date').val());
+
+
+    });
+
+</script>
