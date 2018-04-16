@@ -22,6 +22,8 @@ namespace BuildYourEvent.Controllers
             _context = context;
             _hostingEnvironment = environment;
         }
+
+
         // GET: /<controller>/
         public IActionResult Index()
         {
@@ -31,31 +33,125 @@ namespace BuildYourEvent.Controllers
         {
             return View();
         }
-        public IActionResult Results(short venueTypeId)
+        public IActionResult Results(IList<IFormFile> files)
         {
+            String fromResults = Request.Form["fromResults"];
             dynamic model = new ExpandoObject();
-            List<Venues> venuesList = new List<Venues>();
-            List<Photos> PhotosList = new List<Photos>();
+            short venueTypeId = Convert.ToInt16(Request.Form["venueTypeId"]);
 
-            //model.Venues = (from v in _context.Venues where v.fk_venue_type == venueTypeId select v).ToList();
-            var venues = (from v in _context.Venue_Types_Venues where v.fk_Venue_Type == venueTypeId select v.fk_Venue).ToArray();
-            foreach(var item in venues)
+            if (fromResults.Equals("n"))
             {
-                var v = (from c in _context.Venues where c.id == item select c).FirstOrDefault();
-                venuesList.Add(v);
-                //grab the first photo for each venue to place in the card
-                var pics = (from p in _context.Photos where p.fk_Venue == item select p).First();
+                
+                List<Venues> venuesList = new List<Venues>();
+                List<Photos> PhotosList = new List<Photos>();
+
+                //model.Venues = (from v in _context.Venues where v.fk_venue_type == venueTypeId select v).ToList();
+                var venues = (from v in _context.Venue_Types_Venues where v.fk_Venue_Type == venueTypeId select v.fk_Venue).ToArray();
+                foreach (var item in venues)
+                {
+                    var v = (from c in _context.Venues where c.id == item select c).FirstOrDefault();
+                    venuesList.Add(v);
+                    //grab the first photo for each venue to place in the card
+                    var pics = (from p in _context.Photos where p.fk_Venue == item select p).First();
                     //add this photo to a list to be passed to dynamic model
                     PhotosList.Add(pics);
+                }
+                model.Venues = venuesList.ToList();
+                model.Photos = PhotosList.ToList();
             }
-            model.Venues = venuesList.ToList();
+            else
+            {
+                
+                List<Venues> venuesList = new List<Venues>();
+                List<Photos> PhotosList = new List<Photos>();
+
+                //finding requested fields
+                int price = 0;
+                int guests = 0;
+                String temp = Request.Form["price"];
+                if (temp != null)
+                {
+                    //$ is added to the front of the money slider, needs to be stripped
+                    temp = temp.Replace("$", "");
+                    price = Convert.ToInt32(temp);
+                }
+
+                temp = Request.Form["guests"];
+                if (temp != null && temp != "")
+                {
+                    //$ is added to the front of the money slider, needs to be stripped
+                    temp = temp.Replace("$", "");
+                    guests = Convert.ToInt32(temp);
+                }
+
+                String venueStyle = Request.Form["venueStyle"];
+
+                //filtering fields
+                int fieldCount = 0;
+
+                //grabbing venues in the price
+                if (price > 0)
+                {
+                    ++fieldCount;
+                    var venuePrices = (from v in _context.Venues where v.price_hourly <= price select v).ToArray();
+                    foreach (var item in venuePrices)
+                    {
+                        venuesList.Add(item);
+                    }
+                }
+
+                //grabbing venues in the guests
+                if (guests > 0)
+                {
+                    ++fieldCount;
+                    var venueGuests = (from v in _context.Venues where v.guest_capacity <= guests select v).ToArray();
+                    foreach (var item in venueGuests)
+                    {
+                        venuesList.Add(item);
+                    }
+                }
+
+                //grabbing venues in the guests
+                if (venueStyle != null && venueStyle != "")
+                {
+                    ++fieldCount;
+                    var StyleId = (from v in _context.Styles where v.name == venueStyle select v.id).FirstOrDefault();
+                    var venuesFks = (from v in _context.Styles_Venues where v.fk_Style == StyleId select v.fk_Venue).ToArray();
+
+                    foreach (var venue in venuesFks)
+                    {
+                        var venueFromStyles = (from v in _context.Venues where v.id == venue select v).FirstOrDefault();
+                        venuesList.Add(venueFromStyles);
+                    }
+                }
+
+                List<Venues> commonVenues = new List<Venues>();
+                foreach (var venue in venuesList)
+                {
+                    var count = (from v in venuesList where v.id == venue.id select v).Count();
+                    if (count == fieldCount)
+                    {
+                        commonVenues.Add(venue);
+
+                        //grab the first photo for each venue to place in the card
+                        var pics = (from p in _context.Photos where p.fk_Venue == venue.id select p).First();
+                        //add this photo to a list to be passed to dynamic model
+                        PhotosList.Add(pics);
+                    }
+                }
+                commonVenues = commonVenues.GroupBy(x => x.id).Select(g => g.First()).ToList();
+                PhotosList = PhotosList.GroupBy(x => x.id).Select(g => g.First()).ToList();
+
+                model.Venues = commonVenues.ToList();
+                model.Photos = PhotosList.ToList();
+            }
+            model.VenueTypeId = venueTypeId;
             model.VenueStyles = _context.Styles.ToList();
             model.Amenities = _context.Amenities.ToList();
             model.EventTypes = _context.Event_Types.ToList();
             model.Features = _context.Features.ToList();
             model.OnSiteServices = _context.On_Site_Services.ToList();
             model.VenueRules = _context.Venue_Rules.ToList();
-            model.Photos = PhotosList.ToList();
 
             return View(model);
         }

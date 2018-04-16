@@ -8,10 +8,12 @@
 
         <div class="col-md-7">
             <div class="container">
-                <form asp-controller="Home" asp-action="">
+                <form asp-controller="Home" asp-action="Results" enctype="multipart/form-data">
                     <div class="form-row" style="text-align:center;font-size:1.2em;">
                         <div class="col-md-3">
                             <span>Venue Styles</span>
+                            <input type="hidden" id="fromResults" name="fromResults" value="y"/>
+                            <input type="hidden" id="venueTypeId" name="venueTypeId" value="@Model.VenueTypeId" />
                             <select class="form-control custom-select" name="venueStyle" id="vStyles">
                                 @foreach (Styles style in Model.VenueStyles)
                                 {
@@ -114,6 +116,8 @@
             <div class="modal-body">
                 <div class="container">
                     <form asp-controller="Home" asp-action="">
+                        <input type="hidden" id="fromResults" name="fromResults" value="y" />
+                        <input type="hidden" id="venueTypeId" name="venueTypeId" value="@Model.VenueTypeId" />
                         <input type="hidden" id="price" name="price"/>
                         <input type="hidden" id="numGuests" name="numGuests"/>
                         <input type="hidden" id="style" name="style"/>

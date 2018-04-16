@@ -5,7 +5,8 @@
 }
     <div class="container" id="photo">
         <div class="centered">
-            <form class="form-inline" asp-action="Results" asp-route-venueTypeId="venueTypeId">
+            <form class="form-inline" asp-action="Results" enctype="multipart/form-data">
+                <input type="hidden" id="fromResults" name="fromResults" value="n" />
                 <div class="form-group">
                     <input class="form-control" placeholder="Ottawa, ON" disabled>
                 </div>
