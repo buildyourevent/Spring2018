@@ -45,7 +45,7 @@
                 <div class="container" id="filters"></div>
                 <div class="container-fluid">
                     <div class="card-deck">
-                        <div class="row">
+                        <div class="row" >
 
 
                             @if (Model.Venues != null)
@@ -57,9 +57,9 @@
                                     {
                                         if (photo.fk_Venue == venues.id)
                                         {
-                                            <div class="col-md-4">
-                                                <div class="card" style="width: 22rem; color:black;">
-                                                    <img src="@Url.Content(photo.url)" class="img-thumbnail" style="width:22rem; height: 15rem;">
+                                            <div class="col-md-6"style="padding-bottom:10px;">
+                                                <div class="card" style="width: 22rem;color:black;">
+                                                    <img src="@Url.Content(photo.url)" class="img-thumbnail" style="width:22rem;height: 15rem;">
                                                     <div class="card-body">
                                                         <h5 class="card-title">@venues.name</h5>
                                                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -115,66 +115,73 @@
                     <form action="#">
                         <div class="form-group">
                             <div class="col-sm-12">
-                                <span>Amenities</span>
-                                <select class="form-control custom-select" name="amenities">
-                                    @foreach (Amenities a in Model.Amenities)
-                                    {
-                                        <option>@a.name</option>
+                                <h4>Amenities</h4>
+                                @foreach (Amenities a in Model.Amenities)
+                                {
+                                    
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" name="amenities" type="checkbox" id="@a.name" value="@a.id" />
+                                        <label class="form-check-label" for="@a.name">@a.name</label>
+                                    </div>
 
-                                    }
-                                </select>
+                                }
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-sm-12">
-                                <span>Event Type</span>
-                                <select class="form-control custom-select" name="eventType">
-                                    @foreach (Event_Types e in Model.EventTypes)
-                                    {
-                                        <option>@e.name</option>
+                                <h4>Event Type</h4>
+                                @foreach (Event_Types e in Model.EventTypes)
+                                {
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" name="eventTypes" type="checkbox" id="@e.name" value="@e.id" />
+                                        <label class="form-check-label" for="@e.name">@e.name</label>
+                                    </div>
 
-                                    }
-                                </select>
+                                }
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-sm-12">
-                                <span>Features</span>
-                                <select class="form-control custom-select" name="features">
-                                    @foreach (Features f in Model.Features)
-                                    {
-                                        <option>@f.name</option>
+                                <h4>Features</h4>
+                                @foreach (Features f in Model.Features)
+                                {
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" name="features" type="checkbox" id="@f.name" value="@f.id" />
+                                        <label class="form-check-label" for="@f.name">@f.name</label>
+                                    </div>
 
-                                    }
-                                </select>
+                                }
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-sm-12">
-                                <span>On-Site Services</span>
-                                <select class="form-control custom-select" name="onSiteServices">
-                                    @foreach (On_Site_Services o in Model.OnSiteServices)
-                                    {
-                                        <option>@o.name</option>
+                                <h4>On-Site Services</h4>
+                                @foreach (On_Site_Services o in Model.OnSiteServices)
+                                {
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" name="onSiteServices" type="checkbox" id="@o.name" value="@o.id" />
+                                        <label class="form-check-label" for="@o.name">@o.name</label>
+                                    </div>
 
-                                    }
-                                </select>
+                                }
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-sm-12">
-                                <span>Venue Rules</span>
-                                <select class="form-control custom-select" name="venueRules">
-                                    @foreach (Venue_Rules r in Model.VenueRules)
-                                    {
-                                        <option>@r.name</option>
+                                <h4>Venue Rules</h4>
+                                @foreach (Venue_Rules r in Model.VenueRules)
+                                {
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" name="venueRules" type="checkbox" id="@r.name" value="@r.id" />
+                                        <label class="form-check-label" for="@r.name">@r.name</label>
+                                    </div>
 
-                                    }
-                                </select>
+                                }
                             </div>
                         </div>
-                        <button class=" btn btn-primary">Select new filters</button>
+                        <button class="btn btn-primary">Select new filters</button>
                     </form>
+
                 </div>
             </div><!--modal body-->
         </div><!-- modal-content -->

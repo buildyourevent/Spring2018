@@ -240,4 +240,6 @@ ModelManifest.xml
 
 # FAKE - F# Make
 .fake/
-BuildYourEvent/src/BuildYourEvent/wwwroot/Images/Capture.PNG
+/BuildYourEvent/src/BuildYourEvent/wwwroot/Images/Capture.PNG
+/BuildYourEvent/src/BuildYourEvent/wwwroot/Images/Tree.jpg
+/BuildYourEvent/src/BuildYourEvent/wwwroot/Images/gif-wallpaper-for-android.gif
