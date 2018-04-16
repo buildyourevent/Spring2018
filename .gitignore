@@ -240,3 +240,4 @@ ModelManifest.xml
 
 # FAKE - F# Make
 .fake/
+BuildYourEvent/src/BuildYourEvent/wwwroot/Images/Capture.PNG
