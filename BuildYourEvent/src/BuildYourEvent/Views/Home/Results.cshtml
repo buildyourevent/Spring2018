@@ -116,70 +116,72 @@
                         <div class="form-group">
                             <div class="col-sm-12">
                                 <h4>Amenities</h4>
-                                    @foreach (Amenities a in Model.Amenities)
-                                    {
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" name="amenities" type="checkbox" id="@a.name" value="@a.id" />
-                                            <label class="form-check-label" for="@a.name">@a.name</label>
-                                        </div>
+                                @foreach (Amenities a in Model.Amenities)
+                                {
+                                    
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" name="amenities" type="checkbox" id="@a.name" value="@a.id" />
+                                        <label class="form-check-label" for="@a.name">@a.name</label>
+                                    </div>
 
-                                    }
+                                }
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-sm-12">
                                 <h4>Event Type</h4>
-                                    @foreach (Event_Types e in Model.EventTypes)
-                                    {
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" name="eventTypes" type="checkbox" id="@e.name" value="@e.id" />
-                                            <label class="form-check-label" for="@e.name">@e.name</label>
-                                        </div>
+                                @foreach (Event_Types e in Model.EventTypes)
+                                {
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" name="eventTypes" type="checkbox" id="@e.name" value="@e.id" />
+                                        <label class="form-check-label" for="@e.name">@e.name</label>
+                                    </div>
 
-                                    }
+                                }
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-sm-12">
                                 <h4>Features</h4>
-                                    @foreach (Features f in Model.Features)
-                                    {
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" name="features" type="checkbox" id="@f.name" value="@f.id" />
-                                            <label class="form-check-label" for="@f.name">@f.name</label>
-                                        </div>
+                                @foreach (Features f in Model.Features)
+                                {
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" name="features" type="checkbox" id="@f.name" value="@f.id" />
+                                        <label class="form-check-label" for="@f.name">@f.name</label>
+                                    </div>
 
-                                    }
+                                }
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-sm-12">
                                 <h4>On-Site Services</h4>
-                                    @foreach (On_Site_Services o in Model.OnSiteServices)
-                                    {
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" name="onSiteServices" type="checkbox" id="@o.name" value="@o.id" />
-                                            <label class="form-check-label" for="@o.name">@o.name</label>
-                                        </div>
+                                @foreach (On_Site_Services o in Model.OnSiteServices)
+                                {
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" name="onSiteServices" type="checkbox" id="@o.name" value="@o.id" />
+                                        <label class="form-check-label" for="@o.name">@o.name</label>
+                                    </div>
 
-                                    }
+                                }
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-sm-12">
                                 <h4>Venue Rules</h4>
-                                    @foreach (Venue_Rules r in Model.VenueRules)
-                                    {
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" name="venueRules" type="checkbox" id="@r.name" value="@r.id" />
-                                            <label class="form-check-label" for="@r.name">@r.name</label>
-                                        </div>
+                                @foreach (Venue_Rules r in Model.VenueRules)
+                                {
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" name="venueRules" type="checkbox" id="@r.name" value="@r.id" />
+                                        <label class="form-check-label" for="@r.name">@r.name</label>
+                                    </div>
 
-                                    }
+                                }
                             </div>
                         </div>
                         <button class="btn btn-primary">Select new filters</button>
                     </form>
+
                 </div>
             </div><!--modal body-->
         </div><!-- modal-content -->
