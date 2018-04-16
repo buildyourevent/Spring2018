@@ -27,7 +27,10 @@ namespace BuildYourEvent.Controllers
         {
             return View(_context.Venue_Types.ToList());
         }
-
+        public IActionResult ComingSoon()
+        {
+            return View();
+        }
         public IActionResult Results(short venueTypeId)
         {
             dynamic model = new ExpandoObject();
