@@ -1,4 +1,16 @@
-﻿using System;
+﻿/***************************************************************************************************
+ * Filename: HomeController.cs
+ * 
+ * Authors: Dream Team
+ * 
+ * For: Build Your Event
+ * 
+ * Date: April 20, 2018
+ * 
+ * Purpose: Control all HTTP requests by the user.
+ * 
+ * **************************************************************************************************/
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -8,15 +20,21 @@ using BuildYourEvent.Models;
 using Microsoft.AspNetCore.Http;
 using System.IO;
 using Microsoft.AspNetCore.Hosting;
-// For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace BuildYourEvent.Controllers
 {
+    /***********************************************************************************************
+     * HomeController Class
+     * 
+     * Private members: _context and _hostingEnvironment
+     * *********************************************************************************************/
     public class HomeController : Controller
     {
-        private VenuesDataContext _context;
-        private IHostingEnvironment _hostingEnvironment;
 
+        private VenuesDataContext _context; //used for entity 
+        private IHostingEnvironment _hostingEnvironment; // used for file storage
+
+        //Contructor of HomeController
         public HomeController(VenuesDataContext context, IHostingEnvironment environment)
         {
             _context = context;
@@ -24,15 +42,44 @@ namespace BuildYourEvent.Controllers
         }
 
 
-        // GET: /<controller>/
+        /*****************************************************************************************
+         * Method: IActionIndex Index()
+         * 
+         * Purpose: Performs intial startup page
+         * 
+         * Returns: To Index.cshtml page with a list of venue types
+         * 
+         * ***************************************************************************************/
         public IActionResult Index()
         {
             return View(_context.Venue_Types.ToList());
         }
+
+        /******************************************************************************************
+         * Method: IActionIndex ComingSoon()
+         * 
+         * Purpose: Coming Soon page
+         * 
+         * Returns: To ComingSoon.cshtml
+         * 
+         * *****************************************************************************************/
         public IActionResult ComingSoon()
         {
             return View();
         }
+
+        /*****************************************************************************************
+         * Method: IActionIndex Results()
+         * 
+         * Purpose: Performs all filter functionality requested by 
+         *          the user.  
+         * 
+         * Parameters: IList<IFormFile> files
+         * 
+         * Returns: To Results.cshtml with a dynamic model of
+         *          all user requested information
+         * 
+         * ****************************************************************************************/
         public IActionResult Results(IList<IFormFile> files)
         {
             String fromResults = Request.Form["fromResults"];
@@ -276,15 +323,44 @@ namespace BuildYourEvent.Controllers
 
             return View(model);
         }
+        /**********************************************************************************************
+         * Method: IActionIndex Register()
+         * 
+         * Purpose: Register user page
+         * 
+         * Returns: To Register.cshtml
+         * 
+         * ********************************************************************************************/
         public IActionResult Register()
         {
             return View();
         }
+        /**********************************************************************************************
+        * Method: IActionIndex Logout()
+        * 
+        * Purpose: Log the user out of the application
+        * 
+        * Returns: Once logged out, return to Index.cshtml
+        * 
+        * *********************************************************************************************/
         public IActionResult Logout()
         {
             HttpContext.Session.Clear();
             return RedirectToAction("Index");
         }
+
+        /**********************************************************************************************
+        * Method: IActionIndex RegisterUser()
+        * 
+        * Purpose: Register a user from form fields
+        *          supplied by the user.
+        * 
+        * Parameters: User user-> user information provided from request
+        *             string companyName -> companyName of the vendor
+        * 
+        * Returns: To Index once user has be registered and added to database.
+        * 
+        * **********************************************************************************************/
         public IActionResult RegisterUser(Users user,string companyName)
         {
             _context.Users.Add(user);
@@ -297,7 +373,17 @@ namespace BuildYourEvent.Controllers
             _context.SaveChanges();
             return RedirectToAction("Index");
         }
-
+        /**********************************************************************************************
+        * Method: IActionIndex Login()
+        * 
+        * Purpose: Login a user.
+        * 
+        * Parameters: string username-> username provided from request
+        *             string password-> password provided in the request
+        * 
+        * Returns: Validate user and return to Index if loggged in.
+        * 
+        * **********************************************************************************************/
         public IActionResult Login(String username, String password)
         {
            
@@ -316,6 +402,15 @@ namespace BuildYourEvent.Controllers
             
             return RedirectToAction("Index");
         }
+
+        /*************************************************************************************************
+        * Method: IActionIndex RegisterVenue()
+        * 
+        * Purpose: Register a venue.
+        * 
+        * Returns: To RegisterVenue.cshtml with a dynamic model of all filers
+        * 
+        * *************************************************************************************************/
         public IActionResult RegisterVenue()
         {
           
@@ -332,6 +427,16 @@ namespace BuildYourEvent.Controllers
 
         }
 
+        /***********************************************************************************************
+        * Method: IActionIndex AddVenue()
+        * 
+        * Purpose: Add a venue.
+        * 
+        * Parameters: IList<IFormFile> files -> all photos user would like to add
+        *                                       for said venue
+        * Returns: adds venue to database, returns to Index.cshtml
+        * 
+        * ***********************************************************************************************/
         [HttpPost]
         public async Task<IActionResult> AddVenue(IList<IFormFile> files)
         {
@@ -470,6 +575,16 @@ namespace BuildYourEvent.Controllers
             return RedirectToAction("Index");
         }
 
+        /*****************************************************************************************************
+        * Method: IActionIndex ViewVenue()
+        * 
+        * Purpose: View one venue.
+        * 
+        * Parameters: short id -> id of the venue user would like to see.
+        * 
+        * Returns: to ViewVenue.cshtml with all information for that venue.
+        * 
+        * ****************************************************************************************************/
         public IActionResult ViewVenue(short id)
         {
             dynamic model = new ExpandoObject();
