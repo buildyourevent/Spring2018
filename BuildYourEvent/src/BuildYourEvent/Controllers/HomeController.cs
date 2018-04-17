@@ -52,7 +52,19 @@ namespace BuildYourEvent.Controllers
                     var v = (from c in _context.Venues where c.id == item select c).FirstOrDefault();
                     venuesList.Add(v);
                     //grab the first photo for each venue to place in the card
-                    var pics = (from p in _context.Photos where p.fk_Venue == item select p).First();
+                    Photos pics;
+                    try
+                    {
+                       pics = (from p in _context.Photos where p.fk_Venue == item select p).First();
+                    }
+                    catch (Exception ex)
+                    {
+                        pics = new Photos();
+                        pics.filename = "outside.jpg";
+                        pics.url = "~/Images/outside.jpg";
+                        pics.id = 1;
+                        pics.fk_Venue = v.id;
+                    }
                     //add this photo to a list to be passed to dynamic model
                     PhotosList.Add(pics);
                 }
@@ -138,10 +150,10 @@ namespace BuildYourEvent.Controllers
                 }
 
                 //spliting amentities in string
-                List<int> amenitiesList = venueAmenities.Split(',').Select(int.Parse).ToList();
                 if (venueAmenities != null && venueAmenities != "")
                 {
-                    foreach(var amenitieId in amenitiesList)
+                    List<int> amenitiesList = venueAmenities.Split(',').Select(int.Parse).ToList();
+                    foreach (var amenitieId in amenitiesList)
                     {
                         ++fieldCount;
                         var venueIdList = (from v in _context.Amenities_Venues where v.fk_Amenity == amenitieId select v.fk_Venue).ToList();
@@ -154,10 +166,10 @@ namespace BuildYourEvent.Controllers
                     }
                 }
 
-                //spliting eventTypes in string
-                List<int> eventTypesList = eventTypes.Split(',').Select(int.Parse).ToList();
+                //spliting eventTypes in string      
                 if (eventTypes != null && eventTypes != "")
                 {
+                    List<int> eventTypesList = eventTypes.Split(',').Select(int.Parse).ToList();
                     foreach (var eventTypesId in eventTypesList)
                     {
                         ++fieldCount;
@@ -172,9 +184,9 @@ namespace BuildYourEvent.Controllers
                 }
 
                 //spliting features in string
-                List<int> featuresList = features.Split(',').Select(int.Parse).ToList();
                 if (features != null && features != "")
                 {
+                    List<int> featuresList = features.Split(',').Select(int.Parse).ToList();
                     foreach (var featuresId in featuresList)
                     {
                         ++fieldCount;
@@ -189,9 +201,9 @@ namespace BuildYourEvent.Controllers
                 }
 
                 //spliting eventTypes in string
-                List<int> onSiteServicesList = onSiteServices.Split(',').Select(int.Parse).ToList();
                 if (onSiteServices != null && onSiteServices != "")
                 {
+                    List<int> onSiteServicesList = onSiteServices.Split(',').Select(int.Parse).ToList();
                     foreach (var onSiteServicesId in onSiteServicesList)
                     {
                         ++fieldCount;
@@ -206,9 +218,9 @@ namespace BuildYourEvent.Controllers
                 }
 
                 //spliting venueRules in string
-                List<int> venueRulesList = venueRules.Split(',').Select(int.Parse).ToList();
                 if (venueRules != null && venueRules != "")
                 {
+                    List<int> venueRulesList = venueRules.Split(',').Select(int.Parse).ToList();
                     foreach (var venueRulesId in venueRulesList)
                     {
                         ++fieldCount;
@@ -231,9 +243,19 @@ namespace BuildYourEvent.Controllers
                     {
                         commonVenues.Add(venue);
 
-                        //grab the first photo for each venue to place in the card
-                        var pics = (from p in _context.Photos where p.fk_Venue == venue.id select p).First();
-                        //add this photo to a list to be passed to dynamic model
+                        Photos pics;
+                        try
+                        {
+                            pics = (from p in _context.Photos where p.fk_Venue == venue.id select p).First();
+                        }
+                        catch (Exception ex)
+                        {
+                            pics = new Photos();
+                            pics.filename = "outside.jpg";
+                            pics.url = "~/Images/outside.jpg";
+                            pics.id = 1;
+                            pics.fk_Venue = venue.id;
+                        }
                         PhotosList.Add(pics);
                     }
                 }
