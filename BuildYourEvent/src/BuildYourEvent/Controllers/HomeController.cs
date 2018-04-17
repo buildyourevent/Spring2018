@@ -68,6 +68,13 @@ namespace BuildYourEvent.Controllers
                 //finding requested fields
                 int price = 0;
                 int guests = 0;
+                String venueStyle = "";
+                String venueAmenities = "";
+                String eventTypes = "";
+                String features = "";
+                String onSiteServices = "";
+                String venueRules = "";
+
                 String temp = Request.Form["price"];
                 if (temp != null)
                 {
@@ -84,12 +91,17 @@ namespace BuildYourEvent.Controllers
                     guests = Convert.ToInt32(temp);
                 }
 
-                String venueStyle = Request.Form["venueStyle"];
+                venueStyle = Request.Form["venueStyle"];
+                venueAmenities = Request.Form["amenities"];
+                eventTypes = Request.Form["eventTypes"];
+                features = Request.Form["features"];
+                onSiteServices = Request.Form["onSiteServices"];
+                venueRules = Request.Form["venueRules"];
 
                 //filtering fields
                 int fieldCount = 0;
 
-                //grabbing venues in the price
+                //grabbing venues from the price
                 if (price > 0)
                 {
                     ++fieldCount;
@@ -100,7 +112,7 @@ namespace BuildYourEvent.Controllers
                     }
                 }
 
-                //grabbing venues in the guests
+                //grabbing venues from the guests
                 if (guests > 0)
                 {
                     ++fieldCount;
@@ -111,8 +123,8 @@ namespace BuildYourEvent.Controllers
                     }
                 }
 
-                //grabbing venues in the guests
-                if (venueStyle != null && venueStyle != "")
+                //grabbing venues from the style
+                if (venueStyle != null && venueStyle != "" && venueStyle != "None")
                 {
                     ++fieldCount;
                     var StyleId = (from v in _context.Styles where v.name == venueStyle select v.id).FirstOrDefault();
@@ -125,6 +137,92 @@ namespace BuildYourEvent.Controllers
                     }
                 }
 
+                //spliting amentities in string
+                List<int> amenitiesList = venueAmenities.Split(',').Select(int.Parse).ToList();
+                if (venueAmenities != null && venueAmenities != "")
+                {
+                    foreach(var amenitieId in amenitiesList)
+                    {
+                        ++fieldCount;
+                        var venueIdList = (from v in _context.Amenities_Venues where v.fk_Amenity == amenitieId select v.fk_Venue).ToList();
+
+                        foreach (var venueId in venueIdList)
+                        {
+                            var venue = (from v in _context.Venues where v.id == venueId select v).FirstOrDefault();
+                            venuesList.Add(venue);
+                        }
+                    }
+                }
+
+                //spliting eventTypes in string
+                List<int> eventTypesList = eventTypes.Split(',').Select(int.Parse).ToList();
+                if (eventTypes != null && eventTypes != "")
+                {
+                    foreach (var eventTypesId in eventTypesList)
+                    {
+                        ++fieldCount;
+                        var venueIdList = (from v in _context.Event_Types_Venues where v.fk_Event_Type == eventTypesId select v.fk_Venue).ToList();
+
+                        foreach (var venueId in venueIdList)
+                        {
+                            var venue = (from v in _context.Venues where v.id == venueId select v).FirstOrDefault();
+                            venuesList.Add(venue);
+                        }
+                    }
+                }
+
+                //spliting features in string
+                List<int> featuresList = features.Split(',').Select(int.Parse).ToList();
+                if (features != null && features != "")
+                {
+                    foreach (var featuresId in featuresList)
+                    {
+                        ++fieldCount;
+                        var venueIdList = (from v in _context.Features_Venues where v.fk_Feature == featuresId select v.fk_Venue).ToList();
+
+                        foreach (var venueId in venueIdList)
+                        {
+                            var venue = (from v in _context.Venues where v.id == venueId select v).FirstOrDefault();
+                            venuesList.Add(venue);
+                        }
+                    }
+                }
+
+                //spliting eventTypes in string
+                List<int> onSiteServicesList = onSiteServices.Split(',').Select(int.Parse).ToList();
+                if (onSiteServices != null && onSiteServices != "")
+                {
+                    foreach (var onSiteServicesId in onSiteServicesList)
+                    {
+                        ++fieldCount;
+                        var venueIdList = (from v in _context.On_Site_Services_Venues where v.fk_On_Site_Service == onSiteServicesId select v.fk_Venue).ToList();
+
+                        foreach (var venueId in venueIdList)
+                        {
+                            var venue = (from v in _context.Venues where v.id == venueId select v).FirstOrDefault();
+                            venuesList.Add(venue);
+                        }
+                    }
+                }
+
+                //spliting venueRules in string
+                List<int> venueRulesList = venueRules.Split(',').Select(int.Parse).ToList();
+                if (venueRules != null && venueRules != "")
+                {
+                    foreach (var venueRulesId in venueRulesList)
+                    {
+                        ++fieldCount;
+                        var venueIdList = (from v in _context.Venue_Rules_Venues where v.fk_Venue_Rule == venueRulesId select v.fk_Venue).ToList();
+
+                        foreach (var venueId in venueIdList)
+                        {
+                            var venue = (from v in _context.Venues where v.id == venueId select v).FirstOrDefault();
+                            venuesList.Add(venue);
+                        }
+                    }
+                }
+
+                //removing duplicates from the list and populating photos
                 List<Venues> commonVenues = new List<Venues>();
                 foreach (var venue in venuesList)
                 {
@@ -142,6 +240,7 @@ namespace BuildYourEvent.Controllers
                 commonVenues = commonVenues.GroupBy(x => x.id).Select(g => g.First()).ToList();
                 PhotosList = PhotosList.GroupBy(x => x.id).Select(g => g.First()).ToList();
 
+                //updating the models
                 model.Venues = commonVenues.ToList();
                 model.Photos = PhotosList.ToList();
             }
