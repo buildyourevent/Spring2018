@@ -1,4 +1,18 @@
-﻿using System;
+﻿/***********************************************************************************
+ * Filename: HomeController.cs
+ * 
+ * Purpose: This file contains all the actions requests by the user. Will control
+ *          all user input and deal with it accordingly. Each of the method below
+ *          will detail its contents.
+ *          
+ * Author: DreamTeam
+ *
+ * For: Build Your Event
+ * 
+ * Date: April 20, 2018
+ * 
+ * *********************************************************************************/
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -8,7 +22,6 @@ using BuildYourEvent.Models;
 using Microsoft.AspNetCore.Http;
 using System.IO;
 using Microsoft.AspNetCore.Hosting;
-// For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace BuildYourEvent.Controllers
 {
