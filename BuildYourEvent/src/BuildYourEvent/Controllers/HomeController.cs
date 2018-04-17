@@ -24,7 +24,7 @@ namespace BuildYourEvent.Controllers
         }
 
 
-        // GET: /<controller>/
+        // GET: /<controller>>/
         public IActionResult Index()
         {
             return View(_context.Venue_Types.ToList());
