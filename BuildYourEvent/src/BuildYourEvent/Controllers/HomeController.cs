@@ -183,7 +183,7 @@ namespace BuildYourEvent.Controllers
                     }
                 }
 
-                //spliting features in string
+                //spliting features in stringg
                 if (features != null && features != "")
                 {
                     List<int> featuresList = features.Split(',').Select(int.Parse).ToList();
