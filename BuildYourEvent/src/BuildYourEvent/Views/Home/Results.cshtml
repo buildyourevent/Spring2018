@@ -15,6 +15,7 @@
                             <input type="hidden" id="fromResults" name="fromResults" value="y"/>
                             <input type="hidden" id="venueTypeId" name="venueTypeId" value="@Model.VenueTypeId" />
                             <select class="form-control custom-select" name="venueStyle" id="vStyles">
+                                <option>None</option>
                                 @foreach (Styles style in Model.VenueStyles)
                                 {
                                     <option>@style.name</option>
