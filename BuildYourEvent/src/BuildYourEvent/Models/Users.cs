@@ -53,6 +53,5 @@ namespace BuildYourEvent.Models
             get;
             set;
         }
-
     }
 }

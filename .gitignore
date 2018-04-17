@@ -240,6 +240,7 @@ ModelManifest.xml
 
 # FAKE - F# Make
 .fake/
+/BuildYourEvent/src/BuildYourEvent/wwwroot/Images/Capture.PNG
 /BuildYourEvent/src/BuildYourEvent/wwwroot/Images/Tree.jpg
 /BuildYourEvent/src/BuildYourEvent/wwwroot/Images/gif-wallpaper-for-android.gif
 /BuildYourEvent/src/BuildYourEvent/wwwroot/Images/2016-07-20_HubeiSinkhole_EN-AU8831229647_1920x1080.jpg
