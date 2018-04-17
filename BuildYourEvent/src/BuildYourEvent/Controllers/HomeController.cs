@@ -259,8 +259,62 @@ namespace BuildYourEvent.Controllers
             dynamic model = new ExpandoObject();
             var venue = (from v in _context.Venues where v.id == id select v).FirstOrDefault();
             var venuePics = (from p in _context.Photos where p.fk_Venue == id select p).ToList();
+
+            /*junction is the foreign key tables (junction tables) and cat stands for category table
+             representing the tables holding the names making up a filter
+             */
+            var amenities = (from junction in _context.Amenities_Venues
+                              join cat in _context.Amenities on junction.fk_Amenity equals cat.id
+                              join v in _context.Venues on junction.fk_Venue equals v.id
+                              where junction.fk_Venue == id
+                              select cat.name);
+
+            var eventTypes = (from junction in _context.Event_Types_Venues
+                             join cat in _context.Event_Types on junction.fk_Event_Type equals cat.id
+                             join v in _context.Venues on junction.fk_Venue equals v.id
+                             where junction.fk_Venue == id
+                             select cat.name);
+
+            var features = (from junction in _context.Features_Venues
+                              join cat in _context.Features on junction.fk_Feature equals cat.id
+                              join v in _context.Venues on junction.fk_Venue equals v.id
+                              where junction.fk_Venue == id
+                              select cat.name);
+
+            var onSiteServices = (from junction in _context.On_Site_Services_Venues
+                            join cat in _context.On_Site_Services on junction.fk_On_Site_Service equals cat.id
+                            join v in _context.Venues on junction.fk_Venue equals v.id
+                            where junction.fk_Venue == id
+                            select cat.name);
+
+            var styles = (from junction in _context.Styles_Venues
+                                  join cat in _context.Styles on junction.fk_Style equals cat.id
+                                  join v in _context.Venues on junction.fk_Venue equals v.id
+                                  where junction.fk_Venue == id
+                                  select cat.name);
+
+            var venueRules = (from junction in _context.Venue_Rules_Venues
+                          join cat in _context.Venue_Rules on junction.fk_Venue_Rule equals cat.id
+                          join v in _context.Venues on junction.fk_Venue equals v.id
+                          where junction.fk_Venue == id
+                          select cat.name);
+
+            var venueTypes= (from junction in _context.Venue_Types_Venues
+                              join cat in _context.Venue_Types on junction.fk_Venue_Type equals cat.id
+                              join v in _context.Venues on junction.fk_Venue equals v.id
+                              where junction.fk_Venue == id
+                              select cat.name);
             model.venue = venue;
             model.venuePics = venuePics;
+            model.amenities = amenities;
+            model.eventTypes = eventTypes;
+            model.features = features;
+            model.onSiteServices = onSiteServices;
+            model.styles = styles;
+            model.venueRules = venueRules;
+            model.venueTypes = venueTypes;
+
+
             return View(model);
         }
     }

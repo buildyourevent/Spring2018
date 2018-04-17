@@ -27,6 +27,58 @@
                 <td>@Model.venue.price_hourly</td>
                 <td>@Model.venue.price_daily</td>
                 <td>@Model.venue.venue_size_sqf  Ft&sup2; </td>
+                <td>
+                    <ul>
+                        @foreach (var item in Model.amenities)
+                        {
+                            <li>@item</li>
+                        }
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        @foreach (var item in Model.eventTypes)
+                        {
+                            <li>@item</li>
+                        }
+                    </ul>
+                    <ul>
+                        @foreach (var item in Model.features)
+                        {
+                            <li>@item</li>
+                        }
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        @foreach (var item in Model.onSiteServices)
+                        {
+                            <li>@item</li>
+                        }
+                    </ul>
+                    <ul>
+                        @foreach (var item in Model.styles)
+                        {
+                            <li>@item</li>
+                        }
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        @foreach (var item in Model.venueRules)
+                        {
+                            <li>@item</li>
+                        }
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        @foreach (var item in Model.venueTypes)
+                        {
+                            <li>@item</li>
+                        }
+                    </ul>
+                </td>
             </tr>
         </table>
     </div>
