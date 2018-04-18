@@ -1,18 +1,32 @@
 ﻿
 $(document).ready(function () {
 
-//javascript for price slider
+//javascript for price slider-daily
 $(function () {
-    $("#slider-range-min").slider({
+    $("#slider-range-min-daily").slider({
         range: "min",
-        value: 500,
+        value: 1,
         min: 1,
         max: 1000,
         slide: function (event, ui) {
-            $("#amount").val("$" + ui.value);
+            $("#amount-daily").val("$" + ui.value);
         }
     });
-    $("#amount").val("$" + $("#slider-range-min").slider("value"));
+    $("#amount-daily").val("$" + $("#slider-range-min-daily").slider("value"));
+});
+
+    //javascript for price slider
+$(function () {
+    $("#slider-range-min-hourly").slider({
+        range: "min",
+        value: 1,
+        min: 1,
+        max: 500,
+        slide: function (event, ui) {
+            $("#amount-hourly").val("$" + ui.value);
+        }
+    });
+    $("#amount-hourly").val("$" + $("#slider-range-min-hourly").slider("value"));
 });
 
 

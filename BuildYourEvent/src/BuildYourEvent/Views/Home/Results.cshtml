@@ -22,6 +22,15 @@
 
                                 }
                             </select>
+                            <span>Venue Type</span>
+                            <select class="form-control custom-select" name="venueType" id="vTypes">
+                                <option>None</option>
+                                @foreach (Venue_Types type in Model.VenueTypes)
+                                {
+                                    <option>@type.name</option>
+
+                                }
+                            </select>
                             <span>Event Date</span>
                             <input name="date" class="form-control" id="date" placeholder="Event Date" type="Date" />
                         </div>
@@ -29,8 +38,14 @@
                             <br />
                             <span>Price per day</span>
                             <br />
-                            <input class="form-control" type="text" name="price" id="amount" readonly" />
-                            <div class="form-control" id="slider-range-min"></div>
+                            <input class="form-control" type="text" name="price-daily" id="amount-daily" readonly" />
+                            <div class="form-control" id="slider-range-min-daily"></div>
+
+                            <br />
+                            <span>Price per hour</span>
+                            <br />
+                            <input class="form-control" type="text" name="price-hourly" id="amount-hourly" readonly" />
+                            <div class="form-control" id="slider-range-min-hourly"></div>
                         </div>
                         <div class="col-md-3">
                             <span>Guests</span>
@@ -119,9 +134,11 @@
                     <form asp-controller="Home" asp-action="Results" enctype="multipart/form-data">
                         <input type="hidden" id="fromResults" name="fromResults" value="y" />
                         <input type="hidden" id="venueTypeId" name="venueTypeId" value="@Model.VenueTypeId" />
-                        <input type="hidden" id="price" name="price"/>
+                        <input type="hidden" id="price-daily" name="price-daily"/>
+                        <input type="hidden" id="price-hourly" name="price-hourly" />
                         <input type="hidden" id="numGuests" name="numGuests"/>
                         <input type="hidden" id="style" name="style"/>
+                        <input type="hidden" id="type" name="type" />
                         <input type="hidden" id="event_date" name="event_date"/>
                         <div class="form-group">
                             <div class="col-sm-12">
@@ -202,9 +219,11 @@
 <script type="text/javascript">
     $("#submitFilters").click(function () {    
 
-        $('#price').val($('#amount').val());
+        $('#price-daily').val($('#amount-daily').val());
+        $('#price-hourly').val($('#amount-hourly').val());
         $('#numGuests').val($('#guests').val());
         $('#style').val($('#vStyles').val());
+        $('#type').val($('#vTypes').val());
         $('#event_date').val($('#date').val());
 
 

@@ -313,6 +313,7 @@ namespace BuildYourEvent.Controllers
                 model.Venues = commonVenues.ToList();
                 model.Photos = PhotosList.ToList();
             }
+            model.VenueTypes = _context.Venue_Types.ToList();
             model.VenueTypeId = venueTypeId;
             model.VenueStyles = _context.Styles.ToList();
             model.Amenities = _context.Amenities.ToList();
