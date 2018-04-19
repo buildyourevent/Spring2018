@@ -125,21 +125,31 @@ namespace BuildYourEvent.Controllers
                 List<Photos> PhotosList = new List<Photos>();
 
                 //finding requested fields
-                int price = 0;
+                int priceDaily = 0;
+                int priceHourly = 0;
                 int guests = 0;
                 String venueStyle = "";
+                String venueType = "";
                 String venueAmenities = "";
                 String eventTypes = "";
                 String features = "";
                 String onSiteServices = "";
                 String venueRules = "";
 
-                String temp = Request.Form["price"];
+                String temp = Request.Form["price-daily"];
                 if (temp != null)
                 {
                     //$ is added to the front of the money slider, needs to be stripped
                     temp = temp.Replace("$", "");
-                    price = Convert.ToInt32(temp);
+                    priceDaily = Convert.ToInt32(temp);
+                }
+
+                temp = Request.Form["price-hourly"];
+                if (temp != null)
+                {
+                    //$ is added to the front of the money slider, needs to be stripped
+                    temp = temp.Replace("$", "");
+                    priceHourly = Convert.ToInt32(temp);
                 }
 
                 temp = Request.Form["guests"];
@@ -149,7 +159,7 @@ namespace BuildYourEvent.Controllers
                     temp = temp.Replace("$", "");
                     guests = Convert.ToInt32(temp);
                 }
-
+                venueType = Request.Form["venueType"];
                 venueStyle = Request.Form["venueStyle"];
                 venueAmenities = Request.Form["amenities"];
                 eventTypes = Request.Form["eventTypes"];
@@ -160,11 +170,22 @@ namespace BuildYourEvent.Controllers
                 //filtering fields
                 int fieldCount = 0;
 
-                //grabbing venues from the price
-                if (price > 0)
+                //grabbing venues from the price per hour
+                if (priceHourly > 0)
                 {
                     ++fieldCount;
-                    var venuePrices = (from v in _context.Venues where v.price_hourly <= price select v).ToArray();
+                    var venuePrices = (from v in _context.Venues where v.price_hourly <= priceHourly select v).ToArray();
+                    foreach (var item in venuePrices)
+                    {
+                        venuesList.Add(item);
+                    }
+                }
+
+                //grabbing venues from the price per day
+                if (priceHourly > 0)
+                {
+                    ++fieldCount;
+                    var venuePrices = (from v in _context.Venues where v.price_daily <= priceDaily select v).ToArray();
                     foreach (var item in venuePrices)
                     {
                         venuesList.Add(item);
@@ -188,6 +209,24 @@ namespace BuildYourEvent.Controllers
                     ++fieldCount;
                     var StyleId = (from v in _context.Styles where v.name == venueStyle select v.id).FirstOrDefault();
                     var venuesFks = (from v in _context.Styles_Venues where v.fk_Style == StyleId select v.fk_Venue).ToArray();
+
+                    foreach (var venue in venuesFks)
+                    {
+                        var venueFromStyles = (from v in _context.Venues where v.id == venue select v).FirstOrDefault();
+                        venuesList.Add(venueFromStyles);
+                    }
+                }
+
+                //grabbing venues from the style
+                if (venueType != null && venueType != "" && venueType != "None")
+                {
+                    ++fieldCount;
+                    var TypeId = (from v in _context.Venue_Types where v.name == venueType select v.id).FirstOrDefault();
+
+                    //updating the typeId needed by the session with the users' new choice
+                    venueTypeId = TypeId;
+
+                    var venuesFks = (from v in _context.Venue_Types_Venues where v.fk_Venue_Type == TypeId select v.fk_Venue).ToArray();
 
                     foreach (var venue in venuesFks)
                     {
