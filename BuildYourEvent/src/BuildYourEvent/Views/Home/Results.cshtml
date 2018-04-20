@@ -13,7 +13,6 @@
                         <div class="col-md-3">
                             <span>Venue Styles</span>
                             <input type="hidden" id="fromResults" name="fromResults" value="y"/>
-                            <input type="hidden" id="venueTypeId" name="venueTypeId" value="@Model.VenueTypeId" />
                             <select class="form-control custom-select" name="venueStyle" id="vStyles">
                                 <option>None</option>
                                 @foreach (Styles style in Model.VenueStyles)
@@ -133,7 +132,6 @@
                 <div class="container">
                     <form asp-controller="Home" asp-action="Results" enctype="multipart/form-data">
                         <input type="hidden" id="fromResults" name="fromResults" value="y" />
-                        <input type="hidden" id="venueTypeId" name="venueTypeId" value="@Model.VenueTypeId" />
                         <input type="hidden" id="price-daily" name="price-daily"/>
                         <input type="hidden" id="price-hourly" name="price-hourly" />
                         <input type="hidden" id="numGuests" name="numGuests"/>

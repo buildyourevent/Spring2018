@@ -84,14 +84,14 @@ namespace BuildYourEvent.Controllers
         {
             String fromResults = Request.Form["fromResults"];
             dynamic model = new ExpandoObject();
-            short venueTypeId = Convert.ToInt16(Request.Form["venueTypeId"]);
+            
 
             if (fromResults.Equals("n"))
             {
                 
                 List<Venues> venuesList = new List<Venues>();
                 List<Photos> PhotosList = new List<Photos>();
-
+                short venueTypeId = Convert.ToInt16(Request.Form["venueTypeId"]);
                 //model.Venues = (from v in _context.Venues where v.fk_venue_type == venueTypeId select v).ToList();
                 var venues = (from v in _context.Venue_Types_Venues where v.fk_Venue_Type == venueTypeId select v.fk_Venue).ToArray();
                 foreach (var item in venues)
@@ -171,7 +171,7 @@ namespace BuildYourEvent.Controllers
                 int fieldCount = 0;
 
                 //grabbing venues from the price per hour
-                if (priceHourly > 0)
+                if (priceHourly > 1)
                 {
                     ++fieldCount;
                     var venuePrices = (from v in _context.Venues where v.price_hourly <= priceHourly select v).ToArray();
@@ -182,7 +182,7 @@ namespace BuildYourEvent.Controllers
                 }
 
                 //grabbing venues from the price per day
-                if (priceHourly > 0)
+                if (priceHourly > 1)
                 {
                     ++fieldCount;
                     var venuePrices = (from v in _context.Venues where v.price_daily <= priceDaily select v).ToArray();
@@ -204,7 +204,7 @@ namespace BuildYourEvent.Controllers
                 }
 
                 //grabbing venues from the style
-                if (venueStyle != null && venueStyle != "" && venueStyle != "None")
+                if (venueStyle != null && venueStyle != "" && venueStyle != "None" )
                 {
                     ++fieldCount;
                     var StyleId = (from v in _context.Styles where v.name == venueStyle select v.id).FirstOrDefault();
@@ -222,10 +222,6 @@ namespace BuildYourEvent.Controllers
                 {
                     ++fieldCount;
                     var TypeId = (from v in _context.Venue_Types where v.name == venueType select v.id).FirstOrDefault();
-
-                    //updating the typeId needed by the session with the users' new choice
-                    venueTypeId = TypeId;
-
                     var venuesFks = (from v in _context.Venue_Types_Venues where v.fk_Venue_Type == TypeId select v.fk_Venue).ToArray();
 
                     foreach (var venue in venuesFks)
@@ -322,6 +318,7 @@ namespace BuildYourEvent.Controllers
 
                 //removing duplicates from the list and populating photos
                 List<Venues> commonVenues = new List<Venues>();
+                venuesList = venuesList.GroupBy(x => x.id).Select(g => g.First()).ToList();
                 foreach (var venue in venuesList)
                 {
                     var count = (from v in venuesList where v.id == venue.id select v).Count();
@@ -336,16 +333,17 @@ namespace BuildYourEvent.Controllers
                         }
                         catch (Exception ex)
                         {
+                            Random rnd = new Random();
                             pics = new Photos();
                             pics.filename = "outside.jpg";
                             pics.url = "~/Images/outside.jpg";
-                            pics.id = 1;
+                            pics.id = Convert.ToInt16(rnd.Next(100, 10000));
                             pics.fk_Venue = venue.id;
                         }
                         PhotosList.Add(pics);
                     }
                 }
-                commonVenues = commonVenues.GroupBy(x => x.id).Select(g => g.First()).ToList();
+                
                 PhotosList = PhotosList.GroupBy(x => x.id).Select(g => g.First()).ToList();
 
                 //updating the models
@@ -353,7 +351,6 @@ namespace BuildYourEvent.Controllers
                 model.Photos = PhotosList.ToList();
             }
             model.VenueTypes = _context.Venue_Types.ToList();
-            model.VenueTypeId = venueTypeId;
             model.VenueStyles = _context.Styles.ToList();
             model.Amenities = _context.Amenities.ToList();
             model.EventTypes = _context.Event_Types.ToList();
